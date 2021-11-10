@@ -1,0 +1,29 @@
+OX_7094094752({
+  "ads":{
+    "chain":1,
+    "medium":"w",
+    "record_tmpl":"https://delivery-asia-northeast-1.openx.net/{medium}/1.0/{rtype}?ph=94ef58655625200a8cfc5b15afcd0b94ad52d590&ts={txn_state}",
+    "pixels":"https://jp-u.openx.net/w/1.0/pd?plm=10&ph=94ef58655625200a8cfc5b15afcd0b94ad52d590&gdpr=0",
+    "oxt": 112.072,
+    "adunits" : [
+      {
+        "auid":"540102426",
+        "chain_timeout":"",
+        "chain":[
+          {
+            "is_fallback":1,
+            "ad_id":"0",
+            "adv_acct_id":"",
+            "width":"300",
+            "height":"250",
+            "html":"<script type=\"text/javascript\">\n    google_ad_client = \"ca-pub-8940481053168351\";\n    google_ad_slot = \"2979887339\";\n    google_ad_width = 300;\n    google_ad_height = 250;\n</script>\n<!-- .2 174650.4 electronicshub.org ROW tier1 desktop Home Page Right sidebar 4th Med -->\n<script type=\"text/javascript\"\nsrc=\"//pagead2.googlesyndication.com/pagead/show_ads.js\">\n</script>",
+            "target":"_blank",
+            "ts":"2DAABBgABAAECAAIBAAsAAgAAAGIcGApGUkdmdUY2VEExHBacn9Lx5a2M1L8BFqP1yKeC1YyglwEAHBbL3KXb9pmZnhIW1baEoPbA4cfaAQAW8I6uvAsVAgAsHBUCAAAcJrS8ioMEFQQVBCayvIqDBBbQqgkAAAA",
+            "type":"html",
+            "ad_url":"<script type=\"text/javascript\">\n    google_ad_client = \"ca-pub-8940481053168351\";\n    google_ad_slot = \"2979887339\";\n    google_ad_width = 300;\n    google_ad_height = 250;\n</script>\n<!-- .2 174650.4 electronicshub.org ROW tier1 desktop Home Page Right sidebar 4th Med -->\n<script type=\"text/javascript\"\nsrc=\"//pagead2.googlesyndication.com/pagead/show_ads.js\">\n</script>"
+          }
+        ]
+      }
+    ]
+  }
+});

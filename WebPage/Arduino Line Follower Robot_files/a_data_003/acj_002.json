@@ -1,0 +1,29 @@
+OX_2410681317({
+  "ads":{
+    "chain":1,
+    "medium":"w",
+    "record_tmpl":"https://delivery-asia-northeast-1.openx.net/{medium}/1.0/{rtype}?ph=94ef58655625200a8cfc5b15afcd0b94ad52d590&ts={txn_state}",
+    "pixels":"https://jp-u.openx.net/w/1.0/pd?plm=10&ph=94ef58655625200a8cfc5b15afcd0b94ad52d590&gdpr=0",
+    "oxt": 122.757,
+    "adunits" : [
+      {
+        "auid":"540102734",
+        "chain_timeout":"",
+        "chain":[
+          {
+            "is_fallback":1,
+            "ad_id":"0",
+            "adv_acct_id":"",
+            "width":"300",
+            "height":"250",
+            "html":"<!-- PubMatic ad tag (Javascript) : .2 174646.4 electronicshub.org ROW tier1 desktop Article Page After 4th para Adsense | https://electronicshub.org/ | 300 x 250 Sidekick -->\n<script type=\"text/javascript\">\n\t\tvar pubId=38381;\n\t\tvar siteId=285064;\n\t\tvar kadId=1499744;\n\t\tvar kadwidth=300;\n\t\tvar kadheight=250;\n\t\tvar kadtype=1;\n\t\tvar kadGdpr=1; <!-- set to 1 if inventory is GDPR compliant -->\n\t\tvar kadGdprConsent=\"\"; <!-- Insert user GDPR consent string here for GDPR compliant inventory -->\n\t\tvar kadpageurl= \"https%3A%2F%2Felectronicshub.org%2F\";\n</script>\n<script type=\"text/javascript\" src=\"https://ads.pubmatic.com/AdServer/js/showad.js\"></script>",
+            "target":"_blank",
+            "ts":"2DAABBgABAAECAAIBAAsAAgAAAGMcGAp5WTdKb01wS0g1HBaD8LWKnuD428wBFqH_46WtofTM9QEAHBaH-P3Zsuenm5wBFqvuhOGG7PDHvAEAFu6OrrwLFQIALBwVAgAAHCacwYqDBBUEFQQmsryKgwQW0KoJAAAA",
+            "type":"html",
+            "ad_url":"<!-- PubMatic ad tag (Javascript) : .2 174646.4 electronicshub.org ROW tier1 desktop Article Page After 4th para Adsense | https://electronicshub.org/ | 300 x 250 Sidekick -->\n<script type=\"text/javascript\">\n\t\tvar pubId=38381;\n\t\tvar siteId=285064;\n\t\tvar kadId=1499744;\n\t\tvar kadwidth=300;\n\t\tvar kadheight=250;\n\t\tvar kadtype=1;\n\t\tvar kadGdpr=1; <!-- set to 1 if inventory is GDPR compliant -->\n\t\tvar kadGdprConsent=\"\"; <!-- Insert user GDPR consent string here for GDPR compliant inventory -->\n\t\tvar kadpageurl= \"https%3A%2F%2Felectronicshub.org%2F\";\n</script>\n<script type=\"text/javascript\" src=\"https://ads.pubmatic.com/AdServer/js/showad.js\"></script>"
+          }
+        ]
+      }
+    ]
+  }
+});

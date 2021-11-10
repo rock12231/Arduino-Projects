@@ -1,0 +1,29 @@
+OX_4694334746({
+  "ads":{
+    "chain":1,
+    "medium":"w",
+    "record_tmpl":"https://delivery-asia-northeast-1.openx.net/{medium}/1.0/{rtype}?ph=94ef58655625200a8cfc5b15afcd0b94ad52d590&ts={txn_state}",
+    "pixels":"https://jp-u.openx.net/w/1.0/pd?plm=10&ph=94ef58655625200a8cfc5b15afcd0b94ad52d590&gdpr=0",
+    "oxt": 124.632,
+    "adunits" : [
+      {
+        "auid":"540102791",
+        "chain_timeout":"",
+        "chain":[
+          {
+            "is_fallback":1,
+            "ad_id":"0",
+            "adv_acct_id":"",
+            "width":"300",
+            "height":"250",
+            "html":"<!--/* OpenX JavaScript tag */-->\n\n\n<script type=\"text/javascript\">\nif (!window.OX_ads) { OX_ads = []; }\nOX_ads.push({ \"auid\" : \"540102777\" });\n</script>\n<script type=\"text/javascript\">\ndocument.write('<scr'+'ipt src=\"//us-ads.openx.net/w/1.0/jstag\"><\\/scr'+'ipt>');\n</script>\n<noscript><iframe id=\"84b316ff0d\" name=\"84b316ff0d\" src=\"//us-ads.openx.net/w/1.0/afr?auid=540102777&cb=INSERT_RANDOM_NUMBER_HERE\" frameborder=\"0\" scrolling=\"no\" width=\"300\" height=\"250\"><a href=\"//us-ads.openx.net/w/1.0/rc?cs=84b316ff0d&cb=INSERT_RANDOM_NUMBER_HERE\" ><img src=\"//us-ads.openx.net/w/1.0/ai?auid=540102777&cs=84b316ff0d&cb=INSERT_RANDOM_NUMBER_HERE\" border=\"0\" alt=\"\"></a></iframe></noscript>",
+            "target":"_blank",
+            "ts":"2DAABBgABAAECAAIBAAsAAgAAAGIcGApBejNRWXBPa1JEHBa2t6rfsKjs1UoWw9mFm7DBx_3YAQAcFtK_2uThzL2FhgEWpeGL5tzj77WfAQAW7o6uvAsVAgAsHBUCAAAcJo7CioMEFQQVBCayvIqDBBbQqgkAAAA",
+            "type":"html",
+            "ad_url":"<!--/* OpenX JavaScript tag */-->\n\n\n<script type=\"text/javascript\">\nif (!window.OX_ads) { OX_ads = []; }\nOX_ads.push({ \"auid\" : \"540102777\" });\n</script>\n<script type=\"text/javascript\">\ndocument.write('<scr'+'ipt src=\"//us-ads.openx.net/w/1.0/jstag\"><\\/scr'+'ipt>');\n</script>\n<noscript><iframe id=\"84b316ff0d\" name=\"84b316ff0d\" src=\"//us-ads.openx.net/w/1.0/afr?auid=540102777&cb=INSERT_RANDOM_NUMBER_HERE\" frameborder=\"0\" scrolling=\"no\" width=\"300\" height=\"250\"><a href=\"//us-ads.openx.net/w/1.0/rc?cs=84b316ff0d&cb=INSERT_RANDOM_NUMBER_HERE\" ><img src=\"//us-ads.openx.net/w/1.0/ai?auid=540102777&cs=84b316ff0d&cb=INSERT_RANDOM_NUMBER_HERE\" border=\"0\" alt=\"\"></a></iframe></noscript>"
+          }
+        ]
+      }
+    ]
+  }
+});

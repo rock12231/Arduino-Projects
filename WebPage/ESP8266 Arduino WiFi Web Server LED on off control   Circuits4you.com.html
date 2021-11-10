@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) & !(IE 8)]><!-->
+<html lang="en-US"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#00A8A9">
+	<title>ESP8266 Arduino WiFi Web Server LED on off control | Circuits4you.com</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://circuits4you.com/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="https://circuits4you.com/wp-content/themes/twentythirteen/js/html5.js"></script>
+	<![endif]-->
+	
+<!-- Start The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="noydir">
+<meta name="description" content="In this tutorial, I am going to tell you about controlling LED using web server over WiFi using ESP8266 module or NodeMCU. So let’s start.">
+<meta property="og:image" content="https://circuits4you.com/wp-content/uploads/2016/05/Logo.gif">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="230">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ESP8266 Arduino WiFi Web Server LED on off control | Circuits4you.com">
+<meta property="og:description" content="In this tutorial, I am going to tell you about controlling LED using web server over WiFi using ESP8266 module or NodeMCU. So let’s start.">
+<meta property="og:url" content="https://circuits4you.com/2018/02/05/esp8266-arduino-wifi-web-server-led-on-off-control/">
+<meta property="og:site_name" content="Circuits4you.com">
+<meta property="article:publisher" content="https://www.facebook.com/circuits4youcom-803851386361884">
+<meta property="article:author" content="https://www.facebook.com/profile.php">
+<meta property="article:published_time" content="2018-02-05T08:21-01:00">
+<meta property="article:modified_time" content="2018-07-22T08:23+00:00">
+<meta property="og:updated_time" content="2018-07-22T08:23+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ESP8266 Arduino WiFi Web Server LED on off control | Circuits4you.com">
+<meta name="twitter:description" content="In this tutorial, I am going to tell you about controlling LED using web server over WiFi using ESP8266 module or NodeMCU. So let’s start.">
+<meta name="twitter:image" content="https://circuits4you.com/wp-content/uploads/2016/05/Logo.gif">
+<meta name="twitter:image:width" content="1600">
+<meta name="twitter:image:height" content="230">
+<link rel="canonical" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/a_005.html">
+<script src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/reactive_library.js"></script><script src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/osd.js"></script><script src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/ca-pub-7614241663497500.js"></script><script src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/show_ads_impl.js" id="google_shimpl"></script><script async="" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/analytics.js"></script><script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://circuits4you.com/","name":"Circuits4you.com"}},{"@type":"ListItem","position":2,"item":{"@id":"https://circuits4you.com/category/esp8266/","name":"ESP8266"}},{"@type":"ListItem","position":3,"item":{"name":"ESP8266 Arduino WiFi Web Server LED on off control"}}]}</script>
+<!-- End The SEO Framework by Sybre Waaijer | 0.00771s -->
+
+<link rel="amphtml" href="https://circuits4you.com/2018/02/05/esp8266-arduino-wifi-web-server-led-on-off-control/amp/"><link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="Circuits4you.com » Feed" href="https://circuits4you.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Circuits4you.com » Comments Feed" href="https://circuits4you.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Circuits4you.com » ESP8266 Arduino WiFi Web Server LED on off control Comments Feed" href="https://circuits4you.com/2018/02/05/esp8266-arduino-wifi-web-server-led-on-off-control/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/circuits4you.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.9"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/wp-emoji-release.js" type="text/javascript" defer="defer"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="crayon-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/crayon.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-arduino-ide-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/arduino-ide.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-consolas-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/consolas.css" type="text/css" media="all">
+<link rel="stylesheet" id="wsl-widget-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentythirteen-fonts-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/genericons.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentythirteen-style-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/style_002.css" type="text/css" media="all">
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentythirteen-ie-css'  href='https://circuits4you.com/wp-content/themes/twentythirteen/css/ie.css?ver=2013-07-18' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="jetpack-widget-social-icons-styles-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/social-icons.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/jquery_002.js"></script>
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/jquery-migrate.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/related-posts.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/circuits4you.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/crayon.js"></script>
+<link rel="https://api.w.org/" href="https://circuits4you.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://circuits4you.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://circuits4you.com/wp-includes/wlwmanifest.xml"> 
+<link rel="alternate" type="application/json+oembed" href="https://circuits4you.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcircuits4you.com%2F2018%2F02%2F05%2Fesp8266-arduino-wifi-web-server-led-on-off-control%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://circuits4you.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcircuits4you.com%2F2018%2F02%2F05%2Fesp8266-arduino-wifi-web-server-led-on-off-control%2F&amp;format=xml">
+
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://widgets.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://0.gravatar.com/">
+<link rel="dns-prefetch" href="https://1.gravatar.com/">
+<link rel="dns-prefetch" href="https://2.gravatar.com/">
+<style type="text/css">img#wpstats{display:none}</style>	<style type="text/css" id="twentythirteen-header-css">
+			.site-header {
+			background: url(https://circuits4you.com/wp-content/uploads/2016/05/Logo.gif) no-repeat scroll top;
+			background-size: 1600px auto;
+		}
+		@media (max-width: 767px) {
+			.site-header {
+				background-size: 768px auto;
+			}
+		}
+		@media (max-width: 359px) {
+			.site-header {
+				background-size: 360px auto;
+			}
+		}
+			.site-title,
+		.site-description {
+			position: absolute;
+			clip: rect(1px 1px 1px 1px); /* IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+		</style>
+	<link rel="icon" href="https://circuits4you.com/wp-content/uploads/2016/05/fevicon-150x150.png" sizes="32x32">
+<link rel="icon" href="https://circuits4you.com/wp-content/uploads/2016/05/fevicon.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://circuits4you.com/wp-content/uploads/2016/05/fevicon.png">
+<meta name="msapplication-TileImage" content="https://circuits4you.com/wp-content/uploads/2016/05/fevicon.png">
+			<link rel="stylesheet" type="text/css" id="wp-custom-css" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/a.css">
+			<script async="" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/adsbygoogle.js"></script>
+	<script>
+		 (adsbygoogle = window.adsbygoogle || []).push({
+			  google_ad_client: "ca-pub-7614241663497500",
+			  enable_page_level_ads: true
+		 });
+	</script>
+<link rel="preload" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/integrator.js" as="script"><script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/integrator.js"></script><link rel="preload" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/integrator_002.js" as="script"><script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/integrator_002.js"></script><link rel="preload" href="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/show_ads_impl.js" as="script"></head>
+
+<body class="post-template-default single single-post postid-1268 single-format-standard single-author sidebar">
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62236280-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+	
+	<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+			<a class="home-link" href="https://circuits4you.com/" title="Circuits4you.com" rel="home">
+				<h1 class="site-title">Circuits4you.com</h1>
+				<h2 class="site-description">Arduino interfacing, circuits tutorials
+ with code and ebooks, Step by step guides for all sensor modules used 
+for arduino. Programming tips and tricks.</h2>
+			</a>
+
+			<div id="navbar" class="navbar">
+				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
+					<button class="menu-toggle">Menu</button>
+					<a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>
+					<div class="menu-home-container"><ul id="primary-menu" class="nav-menu"><li id="menu-item-37" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-37"><a href="https://circuits4you.com/">Home</a></li>
+<li id="menu-item-1096" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1096"><a href="http://shop.circuits4you.com/">PROJECT SHOP</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-44"><a href="https://circuits4you.com/category/iot/">Internet of Things</a>
+<ul class="sub-menu">
+	<li id="menu-item-253" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-253"><a href="https://circuits4you.com/category/iot/iot-projects/">IoT Projects</a></li>
+	<li id="menu-item-254" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-254"><a href="https://circuits4you.com/category/iot/iot-tutorials/">IoT Tutorials</a></li>
+</ul>
+</li>
+<li id="menu-item-247" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-247"><a href="https://circuits4you.com/category/arduino/">Arduino</a>
+<ul class="sub-menu">
+	<li id="menu-item-248" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-248"><a href="https://circuits4you.com/category/arduino/arduino-projects/">Arduino Projects</a></li>
+	<li id="menu-item-249" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-249"><a href="https://circuits4you.com/category/arduino/arduino-tutorials/">Arduino Tutorials</a></li>
+</ul>
+</li>
+<li id="menu-item-250" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-250"><a href="https://circuits4you.com/category/electronics/">Electronics</a>
+<ul class="sub-menu">
+	<li id="menu-item-251" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-251"><a href="https://circuits4you.com/category/electronics/electronic-projects/">Projects</a></li>
+	<li id="menu-item-252" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-252"><a href="https://circuits4you.com/category/electronics/electronics-tutorials/">Tutorials</a></li>
+</ul>
+</li>
+<li id="menu-item-255" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-255"><a href="https://circuits4you.com/category/avr-microcontroller/">Microcontroller</a>
+<ul class="sub-menu">
+	<li id="menu-item-256" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-256"><a href="https://circuits4you.com/category/avr-microcontroller/avr-projects/">AVR Projects</a></li>
+	<li id="menu-item-257" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-257"><a href="https://circuits4you.com/category/avr-microcontroller/avr-tutorials/">AVR Tutorials</a></li>
+</ul>
+</li>
+<li id="menu-item-6" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6"><a>About Us</a>
+<ul class="sub-menu">
+	<li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="https://circuits4you.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="https://circuits4you.com/terms-and-conditions/">Terms and Conditions</a></li>
+	<li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><a href="https://circuits4you.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+</ul></div>					<form role="search" method="get" class="search-form" action="https://circuits4you.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form>				</nav><!-- #site-navigation -->
+			</div><!-- #navbar -->
+		</header><!-- #masthead -->
+
+		<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+						
+				
+<article id="post-1268" class="post-1268 post type-post status-publish format-standard hentry category-esp8266 tag-esp8266 tag-led tag-nodemcu tag-web-server">
+	<header class="entry-header">
+		
+				<h1 class="entry-title">ESP8266 Arduino WiFi Web Server LED on off control</h1>
+		
+		<div class="entry-meta">
+			<span class="date"><a href="https://circuits4you.com/2018/02/05/esp8266-arduino-wifi-web-server-led-on-off-control/" title="Permalink to ESP8266 Arduino WiFi Web Server LED on off control" rel="bookmark"><time class="entry-date" datetime="2018-02-05T09:21:37+00:00">February 5, 2018</time></a></span><span class="categories-links"><a href="https://circuits4you.com/category/esp8266/" rel="category tag">ESP8266</a></span><span class="tags-links"><a href="https://circuits4you.com/tag/esp8266/" rel="tag">ESP8266</a>, <a href="https://circuits4you.com/tag/led/" rel="tag">led</a>, <a href="https://circuits4you.com/tag/nodemcu/" rel="tag">NodeMCU</a>, <a href="https://circuits4you.com/tag/web-server/" rel="tag">web server</a></span><span class="author vcard"><a class="url fn n" href="https://circuits4you.com/author/admin/" title="View all posts by Manoj R. Thakur" rel="author">Manoj R. Thakur</a></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p style="text-align: justify;">In this tutorial, I am going to tell you about controlling <strong>LED</strong> using <strong>web server</strong> over <strong>WiFi</strong> using <strong>ESP8266</strong> module or <strong>NodeMCU</strong>.
+ So let’s start. In this tutorial we are using onboard LED of NodeMCU. 
+If you are using different hardware you can connect led to GPIO2 or make
+ changes in code as per your connection.</p>
+<p>There are many ways to <strong>control LED over WiFi.</strong> We will go from basic to advance method of controlling LED using WiFi.</p>
+<p><span id="more-1268"></span></p>
+<p><img class="aligncenter size-full wp-image-1270" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/ESP8266-LED-web-server-control.png" alt="" srcset="https://circuits4you.com/wp-content/uploads/2018/02/ESP8266-LED-web-server-control.png 896w, https://circuits4you.com/wp-content/uploads/2018/02/ESP8266-LED-web-server-control-300x129.png 300w, https://circuits4you.com/wp-content/uploads/2018/02/ESP8266-LED-web-server-control-768x329.png 768w" sizes="(max-width: 896px) 100vw, 896px" width="896" height="384"></p>
+<h3 style="text-align: justify;">Method 1: ESP8266 NodeMCU as LED Web Server</h3>
+<p style="text-align: justify;">In this method we create ESP8266 as WebServer to control on board LED through a web page. <a href="https://circuits4you.com/2016/12/16/esp8266-web-server-html/" target="_blank" rel="noopener">Read More on Creating Web Server with HTML in ESP8266.</a></p>
+<p style="text-align: justify;">In this we use two HTML link tags to 
+turn on LED and Turn Off LED. For this we need three web locations on 
+ESP i.e. we create server on three locations using <strong>serveron </strong>command.</p><div style="text-align: center; width: 100%; height: auto; clear: none;" class="google-auto-placed ap_container"><ins style="display: block; margin: auto; background-color: transparent;" data-ad-format="auto" class="adsbygoogle adsbygoogle-noablate" data-ad-client="ca-pub-7614241663497500" data-adsbygoogle-status="done"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:151px;margin:0;padding:0;position:relative;visibility:visible;width:604px;background-color:transparent;"><ins id="aswift_3_anchor" style="display:block;border:none;height:151px;margin:0;padding:0;position:relative;visibility:visible;width:604px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0px;width:604px;height:151px;" width="604" height="151" frameborder="0"></iframe></ins></ins></ins></div>
+<p style="text-align: justify;">First is to display the user interface, second and third to turn LED on and Off.</p>
+<h4>Arduino IDE code for ESP8266 WiFi LED on off</h4>
+<p>Make changes in WiFi configuration. Enter your WiFi router ssid and 
+password. Program is well commented copy and paste it in Arduino IDE. To
+ install <a href="https://circuits4you.com/2016/12/16/getting-strted-iot-esp8266/" target="_blank" rel="noopener">ESP8266 NodeMCU board read this.</a></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5c127e40abdd3924670964" class="crayon-syntax crayon-theme-arduino-ide crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important; height: 21px !important; line-height: 21px !important; margin-top: -21px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">NodeMCU LED control webserver</span>
+			<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><span class="crayon-language">Arduino</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;" wrap="soft">/*
+ * ESP8266 NodeMCU LED Control over WiFi Demo
+ *
+ * https://circuits4you.com
+ */
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;WiFiClient.h&gt;
+
+//ESP Web Server Library to host a web page
+#include &lt;ESP8266WebServer.h&gt;
+
+//---------------------------------------------------------------
+//Our HTML webpage contents in program memory
+const char MAIN_page[] PROGMEM = R"=====(
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;h1&gt;WiFi LED on off demo: 1&lt;/h1&gt;&lt;br&gt;
+Ciclk to turn &lt;a href="ledOn"&gt;LED ON&lt;/a&gt;&lt;br&gt;
+Ciclk to turn &lt;a href="ledOff"&gt;LED OFF&lt;/a&gt;&lt;br&gt;
+&lt;hr&gt;
+&lt;a href="https://circuits4you.com"&gt;circuits4you.com&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+)=====";
+//---------------------------------------------------------------
+//On board LED Connected to GPIO2
+#define LED 2  
+
+//SSID and Password of your WiFi router
+const char* ssid = "circuits4you.com";
+const char* password = "123456789";
+
+//Declare a global object variable from the ESP8266WebServer class.
+ESP8266WebServer server(80); //Server on port 80
+
+//===============================================================
+// This routine is executed when you open its IP in browser
+//===============================================================
+void handleRoot() {
+ Serial.println("You called root page");
+ String s = MAIN_page; //Read HTML contents
+ server.send(200, "text/html", s); //Send web page
+}
+
+void handleLEDon() { 
+ Serial.println("LED on page");
+ digitalWrite(LED,LOW); //LED is connected in reverse
+ server.send(200, "text/html", "LED is ON"); //Send ADC value only to client ajax request
+}
+
+void handleLEDoff() { 
+ Serial.println("LED off page");
+ digitalWrite(LED,HIGH); //LED off
+ server.send(200, "text/html", "LED is OFF"); //Send ADC value only to client ajax request
+}
+//==============================================================
+//                  SETUP
+//==============================================================
+void setup(void){
+  Serial.begin(115200);
+  
+  WiFi.begin(ssid, password);     //Connect to your WiFi router
+  Serial.println("");
+
+  //Onboard LED port Direction output
+  pinMode(LED,OUTPUT); 
+  //Power on LED state off
+  digitalWrite(LED,HIGH);
+  
+  // Wait for connection
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  //If connection successful show IP address in serial monitor
+  Serial.println("");
+  Serial.print("Connected to ");
+  Serial.println(ssid);
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());  //IP address assigned to your ESP
+ 
+  server.on("/", handleRoot);      //Which routine to handle at root location. This is display page
+  server.on("/ledOn", handleLEDon); //as Per  &lt;a href="ledOn"&gt;, Subroutine to be called
+  server.on("/ledOff", handleLEDoff);
+
+  server.begin();                  //Start server
+  Serial.println("HTTP server started");
+}
+//==============================================================
+//                     LOOP
+//==============================================================
+void loop(void){
+  server.handleClient();          //Handle client requests
+}</textarea></div>
+			<div class="crayon-main" style="max-height: 700px; position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-2">2</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-4">4</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-6">6</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-8">8</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-10">10</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-12">12</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-14">14</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-16">16</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-18">18</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-20">20</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-22">22</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-24">24</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-26">26</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-28">28</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-30">30</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-32">32</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-34">34</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-36">36</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-38">38</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-40">40</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-42">42</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-44">44</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-46">46</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-48">48</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-49">49</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-50">50</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-51">51</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-52">52</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-53">53</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-54">54</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-55">55</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-56">56</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-57">57</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-58">58</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-59">59</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-60">60</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-61">61</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-62">62</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-63">63</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-64">64</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-65">65</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-66">66</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-67">67</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-68">68</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-69">69</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-70">70</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-71">71</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-72">72</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-73">73</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-74">74</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-75">75</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-76">76</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-77">77</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-78">78</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-79">79</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-80">80</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-81">81</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-82">82</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-83">83</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-84">84</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-85">85</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-86">86</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-87">87</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-88">88</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-89">89</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-90">90</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-91">91</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-92">92</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-93">93</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-94">94</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-95">95</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-96">96</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-97">97</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abdd3924670964-98">98</div><div class="crayon-num" data-line="crayon-5c127e40abdd3924670964-99">99</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5c127e40abdd3924670964-1"><span class="crayon-c">/*</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-2"><span class="crayon-c"> * ESP8266 NodeMCU LED Control over WiFi Demo</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-3"><span class="crayon-c"> *</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-4"><span class="crayon-c"> * https://circuits4you.com</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-5"><span class="crayon-c"> */</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-6"><span class="crayon-p">#include &lt;ESP8266WiFi.h&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-7"><span class="crayon-p">#include &lt;WiFiClient.h&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-8">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-9"><span class="crayon-c">//ESP Web Server Library to host a web page</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-10"><span class="crayon-p">#include &lt;ESP8266WebServer.h&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-12"><span class="crayon-c">//---------------------------------------------------------------</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-13"><span class="crayon-c">//Our HTML webpage contents in program memory</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-14"><span class="crayon-r">const</span><span class="crayon-h"> </span><span class="crayon-r">char</span><span class="crayon-h"> </span><span class="crayon-v">MAIN_page</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-v">PROGMEM</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">R</span><span class="crayon-s">"=====(</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-15"><span class="crayon-s">&lt;!DOCTYPE html&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-16"><span class="crayon-s">&lt;html&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-17"><span class="crayon-s">&lt;body&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-18"><span class="crayon-s">&lt;center&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-19"><span class="crayon-s">&lt;h1&gt;WiFi LED on off demo: 1&lt;/h1&gt;&lt;br&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-20"><span class="crayon-s">Ciclk to turn &lt;a href="</span><span class="crayon-i">ledOn</span><span class="crayon-s">"&gt;LED ON&lt;/a&gt;&lt;br&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-21"><span class="crayon-s">Ciclk to turn &lt;a href="</span><span class="crayon-i">ledOff</span><span class="crayon-s">"&gt;LED OFF&lt;/a&gt;&lt;br&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-22"><span class="crayon-s">&lt;hr&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-23"><span class="crayon-s">&lt;a href="</span><span class="crayon-v">https</span><span class="crayon-o">:</span><span class="crayon-c">//circuits4you.com"&gt;circuits4you.com&lt;/a&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-24"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">center</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-25">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-26"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">body</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-27"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">html</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-28"><span class="crayon-sy">)</span><span class="crayon-o">===</span><span class="crayon-o">==</span><span class="crayon-s">";</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-29"><span class="crayon-s">//---------------------------------------------------------------</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-30"><span class="crayon-s">//On board LED Connected to GPIO2</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-31"><span class="crayon-s">#define LED 2&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-32">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-33"><span class="crayon-s">//SSID and Password of your WiFi router</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-34"><span class="crayon-s">const char* ssid = "</span><span class="crayon-v">circuits4you</span><span class="crayon-sy">.</span><span class="crayon-i">com</span><span class="crayon-s">";</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-35"><span class="crayon-s">const char* password = "</span><span class="crayon-cn">123456789</span><span class="crayon-s">";</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-36">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-37"><span class="crayon-s">//Declare a global object variable from the ESP8266WebServer class.</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-38"><span class="crayon-s">ESP8266WebServer server(80); //Server on port 80</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-39">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-40"><span class="crayon-s">//===============================================================</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-41"><span class="crayon-s">// This routine is executed when you open its IP in browser</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-42"><span class="crayon-s">//===============================================================</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-43"><span class="crayon-s">void handleRoot() {</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-44"><span class="crayon-s"> Serial.println("</span><span class="crayon-i">You</span><span class="crayon-h"> </span><span class="crayon-i">called</span><span class="crayon-h"> </span><span class="crayon-i">root</span><span class="crayon-h"> </span><span class="crayon-i">page</span><span class="crayon-s">");</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-45"><span class="crayon-s"> String s = MAIN_page; //Read HTML contents</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-46"><span class="crayon-s"> server.send(200, "</span><span class="crayon-v">text</span><span class="crayon-o">/</span><span class="crayon-i">html</span><span class="crayon-s">", s); //Send web page</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-47"><span class="crayon-s">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-48">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-49"><span class="crayon-s">void handleLEDon() { </span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-50"><span class="crayon-s"> Serial.println("</span><span class="crayon-cn">LED</span><span class="crayon-h"> </span><span class="crayon-i">on</span><span class="crayon-h"> </span><span class="crayon-i">page</span><span class="crayon-s">");</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-51"><span class="crayon-s"> digitalWrite(LED,LOW); //LED is connected in reverse</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-52"><span class="crayon-s"> server.send(200, "</span><span class="crayon-v">text</span><span class="crayon-o">/</span><span class="crayon-i">html</span><span class="crayon-s">", "</span><span class="crayon-cn">LED</span><span class="crayon-h"> </span><span class="crayon-i">is</span><span class="crayon-h"> </span><span class="crayon-cn">ON</span><span class="crayon-s">"); //Send ADC value only to client ajax request</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-53"><span class="crayon-s">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-54">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-55"><span class="crayon-s">void handleLEDoff() { </span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-56"><span class="crayon-s"> Serial.println("</span><span class="crayon-cn">LED</span><span class="crayon-h"> </span><span class="crayon-i">off</span><span class="crayon-h"> </span><span class="crayon-i">page</span><span class="crayon-s">");</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-57"><span class="crayon-s"> digitalWrite(LED,HIGH); //LED off</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-58"><span class="crayon-s"> server.send(200, "</span><span class="crayon-v">text</span><span class="crayon-o">/</span><span class="crayon-i">html</span><span class="crayon-s">", "</span><span class="crayon-cn">LED</span><span class="crayon-h"> </span><span class="crayon-i">is</span><span class="crayon-h"> </span><span class="crayon-cn">OFF</span><span class="crayon-s">"); //Send ADC value only to client ajax request</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-59"><span class="crayon-s">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-60"><span class="crayon-s">//==============================================================</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-61"><span class="crayon-s">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SETUP</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-62"><span class="crayon-s">//==============================================================</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-63"><span class="crayon-s">void setup(void){</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-64"><span class="crayon-s">&nbsp;&nbsp;Serial.begin(115200);</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-65"><span class="crayon-s">&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-66"><span class="crayon-s">&nbsp;&nbsp;WiFi.begin(ssid, password);&nbsp;&nbsp;&nbsp;&nbsp; //Connect to your WiFi router</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-67"><span class="crayon-s">&nbsp;&nbsp;Serial.println("</span><span class="crayon-s">");</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-68">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-69"><span class="crayon-s">&nbsp;&nbsp;//Onboard LED port Direction output</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-70"><span class="crayon-s">&nbsp;&nbsp;pinMode(LED,OUTPUT); </span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-71"><span class="crayon-s">&nbsp;&nbsp;//Power on LED state off</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-72"><span class="crayon-s">&nbsp;&nbsp;digitalWrite(LED,HIGH);</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-73"><span class="crayon-s">&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-74"><span class="crayon-s">&nbsp;&nbsp;// Wait for connection</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-75"><span class="crayon-s">&nbsp;&nbsp;while (WiFi.status() != WL_CONNECTED) {</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-76"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;delay(500);</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-77"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;Serial.print("</span><span class="crayon-sy">.</span><span class="crayon-s">");</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-78"><span class="crayon-s">&nbsp;&nbsp;}</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-79">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-80"><span class="crayon-s">&nbsp;&nbsp;//If connection successful show IP address in serial monitor</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-81"><span class="crayon-s">&nbsp;&nbsp;Serial.println("</span><span class="crayon-s">");</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-82"><span class="crayon-s">&nbsp;&nbsp;Serial.print("</span><span class="crayon-i">Connected</span><span class="crayon-h"> </span><span class="crayon-i">to</span><span class="crayon-h"> </span><span class="crayon-s">");</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-83"><span class="crayon-s">&nbsp;&nbsp;Serial.println(ssid);</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-84"><span class="crayon-s">&nbsp;&nbsp;Serial.print("</span><span class="crayon-cn">IP</span><span class="crayon-h"> </span><span class="crayon-v">address</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">");</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-85"><span class="crayon-s">&nbsp;&nbsp;Serial.println(WiFi.localIP());&nbsp;&nbsp;//IP address assigned to your ESP</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-86"><span class="crayon-s"> </span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-87"><span class="crayon-s">&nbsp;&nbsp;server.on("</span><span class="crayon-o">/</span><span class="crayon-s">", handleRoot);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Which routine to handle at root location. This is display page</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-88"><span class="crayon-s">&nbsp;&nbsp;server.on("</span><span class="crayon-o">/</span><span class="crayon-i">ledOn</span><span class="crayon-s">", handleLEDon); //as Per&nbsp;&nbsp;&lt;a href="</span><span class="crayon-i">ledOn</span><span class="crayon-s">"&gt;, Subroutine to be called</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-89"><span class="crayon-s">&nbsp;&nbsp;server.on("</span><span class="crayon-o">/</span><span class="crayon-i">ledOff</span><span class="crayon-s">", handleLEDoff);</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-90">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-91"><span class="crayon-s">&nbsp;&nbsp;server.begin();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Start server</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-92"><span class="crayon-s">&nbsp;&nbsp;Serial.println("</span><span class="crayon-cn">HTTP</span><span class="crayon-h"> </span><span class="crayon-i">server</span><span class="crayon-h"> </span><span class="crayon-i">started</span>"<span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-93"><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-94"><span class="crayon-c">//==============================================================</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-95"><span class="crayon-c">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOOP</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-96"><span class="crayon-c">//==============================================================</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-97"><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-st">loop</span><span class="crayon-sy">(</span><span class="crayon-t">void</span><span class="crayon-sy">)</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abdd3924670964-98"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-v">server</span><span class="crayon-sy">.</span><span class="crayon-v">handleClient</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Handle client requests</span></div><div class="crayon-line" id="crayon-5c127e40abdd3924670964-99"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0064 seconds] -->
+<p></p>
+<h3>Testing</h3>
+<p>Once the code is uploaded. open serial monitor and note down the IP 
+address. Enter the same ip address in web browser to open web page. In 
+this demo you will find that, you need to press back button. This can be
+ avoided using iframe to open the link.</p>
+<p>&lt;iframe name=”myIframe” width=”100″ height=”25″ frameBorder=”0″&gt;&lt;br&gt;</p>
+<p><img class="aligncenter size-full wp-image-1271" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/ESP8266-LED-on-off-web-server.png" alt="NodeMCU LED on off web server" srcset="https://circuits4you.com/wp-content/uploads/2018/02/ESP8266-LED-on-off-web-server.png 619w, https://circuits4you.com/wp-content/uploads/2018/02/ESP8266-LED-on-off-web-server-300x165.png 300w" sizes="(max-width: 619px) 100vw, 619px" width="619" height="341"></p>
+<h3>ESP8266 LED control without page leaving and get status</h3>
+<p>In this code we use Iframe. that will open the led status page in a frame. without leaving main page.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5c127e40abde4897853159" class="crayon-syntax crayon-theme-arduino-ide crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important; height: 21px !important; line-height: 21px !important; margin-top: -21px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">ESP8266 iFrame Code</span>
+			<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon" style="background-size: 48px 128px; background-image: url(&quot;https://circuits4you.com/wp-content/plugins/crayon-syntax-highlighter/css/images/toolbar/buttons@2x.png&quot;);"></div></div><span class="crayon-language">Arduino</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;" wrap="soft">/*
+ * ESP8266 NodeMCU LED Control over WiFi Demo
+ *
+ * https://circuits4you.com
+ */
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;WiFiClient.h&gt;
+
+//ESP Web Server Library to host a web page
+#include &lt;ESP8266WebServer.h&gt;
+
+//---------------------------------------------------------------
+//Our HTML webpage contents in program memory
+const char MAIN_page[] PROGMEM = R"=====(
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;h1&gt;WiFi LED on off demo: 1&lt;/h1&gt;&lt;br&gt;
+Ciclk to turn &lt;a href="ledOn" target="myIframe"&gt;LED ON&lt;/a&gt;&lt;br&gt;
+Ciclk to turn &lt;a href="ledOff" target="myIframe"&gt;LED OFF&lt;/a&gt;&lt;br&gt;
+LED State:&lt;iframe name="myIframe" width="100" height="25" frameBorder="0"&gt;&lt;br&gt;
+&lt;hr&gt;
+&lt;a href="https://circuits4you.com"&gt;circuits4you.com&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+)=====";
+//---------------------------------------------------------------
+//On board LED Connected to GPIO2
+#define LED 2  
+
+//SSID and Password of your WiFi router
+const char* ssid = "circuits4you.com";
+const char* password = "123456789";
+
+//Declare a global object variable from the ESP8266WebServer class.
+ESP8266WebServer server(80); //Server on port 80
+
+//===============================================================
+// This routine is executed when you open its IP in browser
+//===============================================================
+void handleRoot() {
+ Serial.println("You called root page");
+ String s = MAIN_page; //Read HTML contents
+ server.send(200, "text/html", s); //Send web page
+}
+
+void handleLEDon() { 
+ Serial.println("LED on page");
+ digitalWrite(LED,LOW); //LED is connected in reverse
+ server.send(200, "text/html", "ON"); //Send ADC value only to client ajax request
+}
+
+void handleLEDoff() { 
+ Serial.println("LED off page");
+ digitalWrite(LED,HIGH); //LED off
+ server.send(200, "text/html", "OFF"); //Send ADC value only to client ajax request
+}
+//==============================================================
+//                  SETUP
+//==============================================================
+void setup(void){
+  Serial.begin(115200);
+  
+  WiFi.begin(ssid, password);     //Connect to your WiFi router
+  Serial.println("");
+
+  //Onboard LED port Direction output
+  pinMode(LED,OUTPUT); 
+  //Power on LED state off
+  digitalWrite(LED,HIGH);
+  
+  // Wait for connection
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  //If connection successful show IP address in serial monitor
+  Serial.println("");
+  Serial.print("Connected to ");
+  Serial.println(ssid);
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());  //IP address assigned to your ESP
+ 
+  server.on("/", handleRoot);      //Which routine to handle at root location. This is display page
+  server.on("/ledOn", handleLEDon); //as Per  &lt;a href="ledOn"&gt;, Subroutine to be called
+  server.on("/ledOff", handleLEDoff);
+
+  server.begin();                  //Start server
+  Serial.println("HTTP server started");
+}
+//==============================================================
+//                     LOOP
+//==============================================================
+void loop(void){
+  server.handleClient();          //Handle client requests
+}</textarea></div>
+			<div class="crayon-main" style="max-height: 700px; position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-2">2</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-4">4</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-6">6</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-8">8</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-10">10</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-12">12</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-14">14</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-16">16</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-18">18</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-20">20</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-22">22</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-24">24</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-26">26</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-28">28</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-30">30</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-32">32</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-34">34</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-36">36</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-38">38</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-40">40</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-42">42</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-44">44</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-46">46</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-48">48</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-49">49</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-50">50</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-51">51</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-52">52</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-53">53</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-54">54</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-55">55</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-56">56</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-57">57</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-58">58</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-59">59</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-60">60</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-61">61</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-62">62</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-63">63</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-64">64</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-65">65</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-66">66</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-67">67</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-68">68</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-69">69</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-70">70</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-71">71</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-72">72</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-73">73</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-74">74</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-75">75</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-76">76</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-77">77</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-78">78</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-79">79</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-80">80</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-81">81</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-82">82</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-83">83</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-84">84</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-85">85</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-86">86</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-87">87</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-88">88</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-89">89</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-90">90</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-91">91</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-92">92</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-93">93</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-94">94</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-95">95</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-96">96</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-97">97</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-98">98</div><div class="crayon-num" data-line="crayon-5c127e40abde4897853159-99">99</div><div class="crayon-num crayon-striped-num" data-line="crayon-5c127e40abde4897853159-100">100</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5c127e40abde4897853159-1"><span class="crayon-c">/*</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-2"><span class="crayon-c"> * ESP8266 NodeMCU LED Control over WiFi Demo</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-3"><span class="crayon-c"> *</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-4"><span class="crayon-c"> * https://circuits4you.com</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-5"><span class="crayon-c"> */</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-6"><span class="crayon-p">#include &lt;ESP8266WiFi.h&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-7"><span class="crayon-p">#include &lt;WiFiClient.h&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-8">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abde4897853159-9"><span class="crayon-c">//ESP Web Server Library to host a web page</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-10"><span class="crayon-p">#include &lt;ESP8266WebServer.h&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-12"><span class="crayon-c">//---------------------------------------------------------------</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-13"><span class="crayon-c">//Our HTML webpage contents in program memory</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-14"><span class="crayon-r">const</span><span class="crayon-h"> </span><span class="crayon-r">char</span><span class="crayon-h"> </span><span class="crayon-v">MAIN_page</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-v">PROGMEM</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">R</span><span class="crayon-s">"=====(</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-15"><span class="crayon-s">&lt;!DOCTYPE html&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-16"><span class="crayon-s">&lt;html&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-17"><span class="crayon-s">&lt;body&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-18"><span class="crayon-s">&lt;center&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-19"><span class="crayon-s">&lt;h1&gt;WiFi LED on off demo: 1&lt;/h1&gt;&lt;br&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-20"><span class="crayon-s">Ciclk to turn &lt;a href="</span><span class="crayon-i">ledOn</span><span class="crayon-s">" target="</span><span class="crayon-i">myIframe</span><span class="crayon-s">"&gt;LED ON&lt;/a&gt;&lt;br&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-21"><span class="crayon-s">Ciclk to turn &lt;a href="</span><span class="crayon-i">ledOff</span><span class="crayon-s">" target="</span><span class="crayon-i">myIframe</span><span class="crayon-s">"&gt;LED OFF&lt;/a&gt;&lt;br&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-22"><span class="crayon-s">LED State:&lt;iframe name="</span><span class="crayon-i">myIframe</span><span class="crayon-s">" width="</span><span class="crayon-cn">100</span><span class="crayon-s">" height="</span><span class="crayon-cn">25</span><span class="crayon-s">" frameBorder="</span><span class="crayon-cn">0</span><span class="crayon-s">"&gt;&lt;br&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-23"><span class="crayon-s">&lt;hr&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-24"><span class="crayon-s">&lt;a href="</span><span class="crayon-v">https</span><span class="crayon-o">:</span><span class="crayon-c">//circuits4you.com"&gt;circuits4you.com&lt;/a&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-25"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">center</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-26">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abde4897853159-27"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">body</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-28"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">html</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-29"><span class="crayon-sy">)</span><span class="crayon-o">===</span><span class="crayon-o">==</span><span class="crayon-s">";</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-30"><span class="crayon-s">//---------------------------------------------------------------</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-31"><span class="crayon-s">//On board LED Connected to GPIO2</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-32"><span class="crayon-s">#define LED 2&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-33">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-34"><span class="crayon-s">//SSID and Password of your WiFi router</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-35"><span class="crayon-s">const char* ssid = "</span><span class="crayon-v">circuits4you</span><span class="crayon-sy">.</span><span class="crayon-i">com</span><span class="crayon-s">";</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-36"><span class="crayon-s">const char* password = "</span><span class="crayon-cn">123456789</span><span class="crayon-s">";</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-37">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-38"><span class="crayon-s">//Declare a global object variable from the ESP8266WebServer class.</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-39"><span class="crayon-s">ESP8266WebServer server(80); //Server on port 80</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-40">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abde4897853159-41"><span class="crayon-s">//===============================================================</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-42"><span class="crayon-s">// This routine is executed when you open its IP in browser</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-43"><span class="crayon-s">//===============================================================</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-44"><span class="crayon-s">void handleRoot() {</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-45"><span class="crayon-s"> Serial.println("</span><span class="crayon-i">You</span><span class="crayon-h"> </span><span class="crayon-i">called</span><span class="crayon-h"> </span><span class="crayon-i">root</span><span class="crayon-h"> </span><span class="crayon-i">page</span><span class="crayon-s">");</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-46"><span class="crayon-s"> String s = MAIN_page; //Read HTML contents</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-47"><span class="crayon-s"> server.send(200, "</span><span class="crayon-v">text</span><span class="crayon-o">/</span><span class="crayon-i">html</span><span class="crayon-s">", s); //Send web page</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-48"><span class="crayon-s">}</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-49">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-50"><span class="crayon-s">void handleLEDon() { </span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-51"><span class="crayon-s"> Serial.println("</span><span class="crayon-cn">LED</span><span class="crayon-h"> </span><span class="crayon-i">on</span><span class="crayon-h"> </span><span class="crayon-i">page</span><span class="crayon-s">");</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-52"><span class="crayon-s"> digitalWrite(LED,LOW); //LED is connected in reverse</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-53"><span class="crayon-s"> server.send(200, "</span><span class="crayon-v">text</span><span class="crayon-o">/</span><span class="crayon-i">html</span><span class="crayon-s">", "</span><span class="crayon-cn">ON</span><span class="crayon-s">"); //Send ADC value only to client ajax request</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-54"><span class="crayon-s">}</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-55">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-56"><span class="crayon-s">void handleLEDoff() { </span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-57"><span class="crayon-s"> Serial.println("</span><span class="crayon-cn">LED</span><span class="crayon-h"> </span><span class="crayon-i">off</span><span class="crayon-h"> </span><span class="crayon-i">page</span><span class="crayon-s">");</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-58"><span class="crayon-s"> digitalWrite(LED,HIGH); //LED off</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-59"><span class="crayon-s"> server.send(200, "</span><span class="crayon-v">text</span><span class="crayon-o">/</span><span class="crayon-i">html</span><span class="crayon-s">", "</span><span class="crayon-cn">OFF</span><span class="crayon-s">"); //Send ADC value only to client ajax request</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-60"><span class="crayon-s">}</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-61"><span class="crayon-s">//==============================================================</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-62"><span class="crayon-s">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SETUP</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-63"><span class="crayon-s">//==============================================================</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-64"><span class="crayon-s">void setup(void){</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-65"><span class="crayon-s">&nbsp;&nbsp;Serial.begin(115200);</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-66"><span class="crayon-s">&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-67"><span class="crayon-s">&nbsp;&nbsp;WiFi.begin(ssid, password);&nbsp;&nbsp;&nbsp;&nbsp; //Connect to your WiFi router</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-68"><span class="crayon-s">&nbsp;&nbsp;Serial.println("</span><span class="crayon-s">");</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-69">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-70"><span class="crayon-s">&nbsp;&nbsp;//Onboard LED port Direction output</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-71"><span class="crayon-s">&nbsp;&nbsp;pinMode(LED,OUTPUT); </span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-72"><span class="crayon-s">&nbsp;&nbsp;//Power on LED state off</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-73"><span class="crayon-s">&nbsp;&nbsp;digitalWrite(LED,HIGH);</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-74"><span class="crayon-s">&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-75"><span class="crayon-s">&nbsp;&nbsp;// Wait for connection</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-76"><span class="crayon-s">&nbsp;&nbsp;while (WiFi.status() != WL_CONNECTED) {</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-77"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;delay(500);</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-78"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;Serial.print("</span><span class="crayon-sy">.</span><span class="crayon-s">");</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-79"><span class="crayon-s">&nbsp;&nbsp;}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-80">&nbsp;</div><div class="crayon-line" id="crayon-5c127e40abde4897853159-81"><span class="crayon-s">&nbsp;&nbsp;//If connection successful show IP address in serial monitor</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-82"><span class="crayon-s">&nbsp;&nbsp;Serial.println("</span><span class="crayon-s">");</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-83"><span class="crayon-s">&nbsp;&nbsp;Serial.print("</span><span class="crayon-i">Connected</span><span class="crayon-h"> </span><span class="crayon-i">to</span><span class="crayon-h"> </span><span class="crayon-s">");</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-84"><span class="crayon-s">&nbsp;&nbsp;Serial.println(ssid);</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-85"><span class="crayon-s">&nbsp;&nbsp;Serial.print("</span><span class="crayon-cn">IP</span><span class="crayon-h"> </span><span class="crayon-v">address</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">");</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-86"><span class="crayon-s">&nbsp;&nbsp;Serial.println(WiFi.localIP());&nbsp;&nbsp;//IP address assigned to your ESP</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-87"><span class="crayon-s"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-88"><span class="crayon-s">&nbsp;&nbsp;server.on("</span><span class="crayon-o">/</span><span class="crayon-s">", handleRoot);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Which routine to handle at root location. This is display page</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-89"><span class="crayon-s">&nbsp;&nbsp;server.on("</span><span class="crayon-o">/</span><span class="crayon-i">ledOn</span><span class="crayon-s">", handleLEDon); //as Per&nbsp;&nbsp;&lt;a href="</span><span class="crayon-i">ledOn</span><span class="crayon-s">"&gt;, Subroutine to be called</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-90"><span class="crayon-s">&nbsp;&nbsp;server.on("</span><span class="crayon-o">/</span><span class="crayon-i">ledOff</span><span class="crayon-s">", handleLEDoff);</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-91">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-92"><span class="crayon-s">&nbsp;&nbsp;server.begin();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Start server</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-93"><span class="crayon-s">&nbsp;&nbsp;Serial.println("</span><span class="crayon-cn">HTTP</span><span class="crayon-h"> </span><span class="crayon-i">server</span><span class="crayon-h"> </span><span class="crayon-i">started</span>"<span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-94"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-95"><span class="crayon-c">//==============================================================</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-96"><span class="crayon-c">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOOP</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-97"><span class="crayon-c">//==============================================================</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-98"><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-st">loop</span><span class="crayon-sy">(</span><span class="crayon-t">void</span><span class="crayon-sy">)</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5c127e40abde4897853159-99"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-v">server</span><span class="crayon-sy">.</span><span class="crayon-v">handleClient</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//Handle client requests</span></div><div class="crayon-line crayon-striped-line" id="crayon-5c127e40abde4897853159-100"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0061 seconds] -->
+<p></p>
+<h3>Results</h3>
+<p><img class="aligncenter size-full wp-image-1272" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/nodemcu-led-web-server.png" alt="" srcset="https://circuits4you.com/wp-content/uploads/2018/02/nodemcu-led-web-server.png 659w, https://circuits4you.com/wp-content/uploads/2018/02/nodemcu-led-web-server-300x154.png 300w" sizes="(max-width: 659px) 100vw, 659px" width="659" height="338"></p>
+<h2>Related Reading</h2>
+<p><strong>How to control multiple LEDs? <a href="https://circuits4you.com/2016/05/19/iot-based-home-automation-project/" target="_blank" rel="noopener">Read here</a></strong></p>
+<p>In this example you can find same logic can be applied to multiple relay control. that makes a home automation system.</p>
+<p><strong>How to read ESP8266 ADC data and display it in web page without refresh? <a href="https://circuits4you.com/2018/02/04/esp8266-ajax-update-part-of-web-page-without-refreshing/" target="_blank" rel="noopener">Read here</a></strong></p>
+<p>This is little advanced application uses javascript ajax to update and control LED.</p>
+<p><strong>How to upload ADC Sensor data to a real IoT Cloud Web Server? <a href="https://circuits4you.com/2017/12/09/thing-speak-esp8266/" target="_blank" rel="noopener">Read here</a></strong></p>
+<p>In this example we upload adc data to things speak server.</p><div style="text-align: center; width: 100%; height: auto; clear: none;" class="google-auto-placed ap_container"><ins style="display: block; margin: auto; background-color: transparent;" data-ad-format="auto" class="adsbygoogle adsbygoogle-noablate" data-ad-client="ca-pub-7614241663497500" data-adsbygoogle-status="done"><ins id="aswift_4_expand" style="display:inline-table;border:none;height:151px;margin:0;padding:0;position:relative;visibility:visible;width:604px;background-color:transparent;"><ins id="aswift_4_anchor" style="display:block;border:none;height:151px;margin:0;padding:0;position:relative;visibility:visible;width:604px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_4" name="aswift_4" style="left:0;position:absolute;top:0;border:0px;width:604px;height:151px;" width="604" height="151" frameborder="0"></iframe></ins></ins></ins></div>
+<p><strong>Create Advance Cool IoT Widgets Like analog dial shown below. <a href="https://circuits4you.com/2018/02/03/esp8266-nodemcu-adc-analog-value-on-dial-gauge/" target="_blank" rel="noopener">Read more here</a></strong></p>
+<p><img class="aligncenter size-full wp-image-1250" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/ESP8266-Analog-read-dial-gauge.png" alt="ESP8266-analog read dial" srcset="https://circuits4you.com/wp-content/uploads/2018/02/ESP8266-Analog-read-dial-gauge.png 595w, https://circuits4you.com/wp-content/uploads/2018/02/ESP8266-Analog-read-dial-gauge-300x220.png 300w" sizes="(max-width: 595px) 100vw, 595px" width="595" height="436"></p>
+<h3><strong>To know read our Zero to Hero Book. <a href="https://circuits4you.com/" target="_blank" rel="noopener">Get it now</a></strong></h3>
+<ul class="socialmanoj"><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcircuits4you.com%2F2018%2F02%2F05%2Fesp8266-arduino-wifi-web-server-led-on-off-control%2F" target="_blank"><svg width="15" height="15" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" fill="#fff"></path></svg><span>Facebook</span>
+		    </a> 
+		  </li>
+		  
+		  <li><a href="https://twitter.com/intent/tweet?text=ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control&amp;url=https%3A%2F%2Fcircuits4you.com%2F2018%2F02%2F05%2Fesp8266-arduino-wifi-web-server-led-on-off-control%2F&amp;via=manoj" target="_blank"><svg width="15" height="15" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" fill="#fff"></path></svg><span>Twitter</span>
+		    </a>
+		  </li>		  
+		  
+		  <li><a href="https://plus.google.com/share?url=https%3A%2F%2Fcircuits4you.com%2F2018%2F02%2F05%2Fesp8266-arduino-wifi-web-server-led-on-off-control%2F" target="_blank"><svg width="15" height="15" viewBox="0 0 2304 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1437 913q0 208-87 370.5t-248 254-369 91.5q-149 0-285-58t-234-156-156-234-58-285 58-285 156-234 234-156 285-58q286 0 491 192l-199 191q-117-113-292-113-123 0-227.5 62t-165.5 168.5-61 232.5 61 232.5 165.5 168.5 227.5 62q83 0 152.5-23t114.5-57.5 78.5-78.5 49-83 21.5-74h-416v-252h692q12 63 12 122zm867-122v210h-209v209h-210v-209h-209v-210h209v-209h210v209h209z" fill="#fff"></path></svg><span>Google Plus</span>
+		    </a> 
+		  </li>
+
+		  <li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fcircuits4you.com%2F2018%2F02%2F05%2Fesp8266-arduino-wifi-web-server-led-on-off-control%2F&amp;title=ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control" target="_blank"><svg width="15" height="15" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" fill="#fff"></path></svg><span>LinkedIn</span>
+		    </a> 
+		  </li>
+
+		  <li><a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fcircuits4you.com%2F2018%2F02%2F05%2Fesp8266-arduino-wifi-web-server-led-on-off-control%2F&amp;media=&amp;description=ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control" target="_blank"><svg width="15" height="15" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M256 597q0-108 37.5-203.5t103.5-166.5 152-123 185-78 202-26q158 0 294 66.5t221 193.5 85 287q0 96-19 188t-60 177-100 149.5-145 103-189 38.5q-68 0-135-32t-96-88q-10 39-28 112.5t-23.5 95-20.5 71-26 71-32 62.5-46 77.5-62 86.5l-14 5-9-10q-15-157-15-188 0-92 21.5-206.5t66.5-287.5 52-203q-32-65-32-169 0-83 52-156t132-73q61 0 95 40.5t34 102.5q0 66-44 191t-44 187q0 63 45 104.5t109 41.5q55 0 102-25t78.5-68 56-95 38-110.5 20-111 6.5-99.5q0-173-109.5-269.5t-285.5-96.5q-200 0-334 129.5t-134 328.5q0 44 12.5 85t27 65 27 45.5 12.5 30.5q0 28-15 73t-37 45q-2 0-17-3-51-15-90.5-56t-61-94.5-32.5-108-11-106.5z" fill="#fff"></path></svg><span>Pin It</span>
+		    </a> 
+		  </li></ul>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-visual jp-relatedposts-grid "><div class="jp-relatedposts-post jp-relatedposts-post0 jp-relatedposts-post-thumbs" data-post-id="1304" data-post-format="false"><a class="jp-relatedposts-post-a" href="https://circuits4you.com/2018/03/09/esp8266-static-ip-address-arduino-example/" title="ESP8266 Static IP Address arduino Example
+
+In this tutorial we will learn how to use static IP address for ESP8266 NodeMCU. We make LED on off control with simple web server with static IP to our ESP. Step 1: Required Header files There is no need of any special header file for having static IP address.…" rel="nofollow" data-origin="1268" data-position="0"><img class="jp-relatedposts-post-img" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/Set-a-static-IP-address-in-ESP8266-NodeMCU.png" alt="ESP8266 Static IP Address arduino Example" scale="0" width="350"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://circuits4you.com/2018/03/09/esp8266-static-ip-address-arduino-example/" title="ESP8266 Static IP Address arduino Example
+
+In this tutorial we will learn how to use static IP address for ESP8266 NodeMCU. We make LED on off control with simple web server with static IP to our ESP. Step 1: Required Header files There is no need of any special header file for having static IP address.…" rel="nofollow" data-origin="1268" data-position="0">ESP8266 Static IP Address arduino Example</a></h4><p class="jp-relatedposts-post-excerpt">In
+ this tutorial we will learn how to use static IP address for ESP8266 
+NodeMCU. We make LED on off control with simple web server with static 
+IP to our ESP. Step 1: Required Header files There is no need of any 
+special header file for having static IP address.…</p><p class="jp-relatedposts-post-date" style="display: block;">March 9, 2018</p><p class="jp-relatedposts-post-context">In "ESP8266"</p></div><div class="jp-relatedposts-post jp-relatedposts-post1 jp-relatedposts-post-thumbs" data-post-id="1244" data-post-format="false"><a class="jp-relatedposts-post-a" href="https://circuits4you.com/2018/02/04/esp8266-ajax-update-part-of-web-page-without-refreshing/" title="ESP8266 (ajax) update part of web page without refreshing
+
+In this tutorial we receive ADC data and send LED on off data to ESP8266 without refreshing webpage. You can do a lot of things with this. At the end we will see some advance applications of this. To make this possible we need to use javaScript Ajax. Tools you…" rel="nofollow" data-origin="1268" data-position="1"><img class="jp-relatedposts-post-img" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/ESP8266-Ajax-without-refresh.png" alt="ESP8266 (ajax) update part of web page without refreshing" scale="0" width="350"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://circuits4you.com/2018/02/04/esp8266-ajax-update-part-of-web-page-without-refreshing/" title="ESP8266 (ajax) update part of web page without refreshing
+
+In this tutorial we receive ADC data and send LED on off data to ESP8266 without refreshing webpage. You can do a lot of things with this. At the end we will see some advance applications of this. To make this possible we need to use javaScript Ajax. Tools you…" rel="nofollow" data-origin="1268" data-position="1">ESP8266 (ajax) update part of web page without refreshing</a></h4><p class="jp-relatedposts-post-excerpt">In
+ this tutorial we receive ADC data and send LED on off data to ESP8266 
+without refreshing webpage. You can do a lot of things with this. At the
+ end we will see some advance applications of this. To make this 
+possible we need to use javaScript Ajax. Tools you…</p><p class="jp-relatedposts-post-date" style="display: block;">February 4, 2018</p><p class="jp-relatedposts-post-context">In "ESP8266"</p></div><div class="jp-relatedposts-post jp-relatedposts-post2 jp-relatedposts-post-thumbs" data-post-id="918" data-post-format="false"><a class="jp-relatedposts-post-a" href="https://circuits4you.com/2016/12/16/esp8266-web-server-html/" title="ESP8266 Web Server with HTML Web Page
+
+In this tutorial we are making ESP8266 web server with HTML web page. ESP8266&nbsp;connects to WiFi Network&nbsp;and we get web page in our phone and PC which is connected to same WiFi network. In previous tutorial we have seen how to make ESP8266 as Access point and&nbsp;web server. A Web…" rel="nofollow" data-origin="1268" data-position="2"><img class="jp-relatedposts-post-img" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/HTML-Web-Page.png" alt="ESP8266 Web Server with HTML Web Page" scale="0" width="350"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://circuits4you.com/2016/12/16/esp8266-web-server-html/" title="ESP8266 Web Server with HTML Web Page
+
+In this tutorial we are making ESP8266 web server with HTML web page. ESP8266&nbsp;connects to WiFi Network&nbsp;and we get web page in our phone and PC which is connected to same WiFi network. In previous tutorial we have seen how to make ESP8266 as Access point and&nbsp;web server. A Web…" rel="nofollow" data-origin="1268" data-position="2">ESP8266 Web Server with HTML Web Page</a></h4><p class="jp-relatedposts-post-excerpt">In
+ this tutorial we are making ESP8266 web server with HTML web page. 
+ESP8266&nbsp;connects to WiFi Network&nbsp;and we get web page in our 
+phone and PC which is connected to same WiFi network. In previous 
+tutorial we have seen how to make ESP8266 as Access point and&nbsp;web 
+server. A Web…</p><p class="jp-relatedposts-post-date" style="display: block;">December 16, 2016</p><p class="jp-relatedposts-post-context">In "IoT Tutorials"</p></div></div></div>	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+					<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+
+			<a href="https://circuits4you.com/2018/02/04/esp8266-ajax-update-part-of-web-page-without-refreshing/" rel="prev"><span class="meta-nav">←</span> ESP8266 (ajax) update part of web page without refreshing</a>			<a href="https://circuits4you.com/2018/02/20/esp8266-arduino-digital-io/" rel="next">ESP8266 arduino digital IO <span class="meta-nav">→</span></a>
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+					
+<div id="comments" class="comments-area">
+
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://circuits4you.com/2018/02/05/esp8266-arduino-wifi-web-server-led-on-off-control/#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="https://circuits4you.com/wp-login.php?redirect_to=https%3A%2F%2Fcircuits4you.com%2F2018%2F02%2F05%2Fesp8266-arduino-wifi-web-server-led-on-off-control%2F">logged in</a> to post a comment.</p>
+<!--
+	wsl_render_auth_widget
+	WordPress Social Login 2.3.3.
+	http://wordpress.org/plugins/wordpress-social-login/
+-->
+
+<style type="text/css">
+.wp-social-login-connect-with{}.wp-social-login-provider-list{}.wp-social-login-provider-list a{}.wp-social-login-provider-list img{}.wsl_connect_with_provider{}.login h1 a{background-image: url(https://circuits4you.com/wp-content/uploads/2016/05/Logo.gif?ver=20171202);background-image: none,url(https://circuits4you.com/wp-content/uploads/2016/05/Logo.gif?ver=20171202);background-size:280px;width: 300px;height: 58px}.login form{background: #fff;box-shadow: 0px 0px 0px 0px}#login{padding: 2% 0 0;background: #00A8A9;margin-top: 18px;border: 1px solid black;box-shadow: 1px 5px 9px 1px}.login #login_error, .login .message{border-left: 4px solid #00a0d2;padding: 0px 0px 0px 75px;margin-left: 0;margin-bottom: 20px;background-color: #00A8A9;box-shadow: 0px 0px 0px 0px}.wp-social-login-connect-with{text-align: center;font-size: 16px;margin-bottom: 5px}.wp-social-login-provider-list{text-align: center;margin-bottom: 15px}.wp-social-login-provider, .wp-social-login-provider:hover{display: inline-block;height: 44px;width: 190px;margin: 0px;color: transparent}.wp-social-login-provider-google{background-image: url( "https://circuits4you.com/wp-content/uploads/2018/02/btn_google_signin_dark_normal_web.png" );</style>
+
+<div class="wp-social-login-widget">
+
+	<div class="wp-social-login-connect-with">Login with:</div>
+
+	<div class="wp-social-login-provider-list">
+
+		<a rel="nofollow" href="https://circuits4you.com/wp-login.php?action=wordpress_social_authenticate&amp;mode=login&amp;provider=Google&amp;redirect_to=https%3A%2F%2Fcircuits4you.com%2F2018%2F02%2F05%2Fesp8266-arduino-wifi-web-server-led-on-off-control%2F" title="Connect with Google" class="wp-social-login-provider wp-social-login-provider-google" data-provider="Google">
+			Google
+		</a>
+
+	</div>
+
+	<div class="wp-social-login-widget-clearing"></div>
+
+</div>
+
+<!-- wsl_render_auth_widget -->
+
+	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+	<div id="tertiary" class="sidebar-container" role="complementary">
+		<div class="sidebar-inner">
+			<div class="widget-area">
+				<aside id="text-7" class="widget widget_text"><h3 class="widget-title">Our e-Books</h3>			<div class="textwidget"><b>NodeMCU Communication Methods and Protocols:</b> Upgrade Your Knowledge
+<a href="https://circuits4you.com/nodemcu-esp8266-communication-methods-and-protocols/">
+<center>
+<img src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/ESPProtocols3DbookSmall.png" scale="0" width="185" height="250"></center><br></a>
+<hr>
+<b>Zero to Hero: ESP8266:</b> Become Super hero of Internet of Things
+<a href="https://circuits4you.com/zero-to-hero-esp8266/">
+<center>
+<img src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/seb4.png" scale="0" width="185" height="250"></center><br></a>
+<hr>
+<b>Measurement Made Simple with Arduino:</b> Ultimate e-Book for all your measurement needs at one place.
+<a href="https://circuits4you.com/measurement-made-simple-with-arduino/">
+<center>
+<img src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/seb2.png" scale="0" width="185" height="250"></center><br></a>
+<b>Arduino Beginners Guide:</b> Get started with arduino in simple steps<a href="https://circuits4you.com/arduino-beginners-guide/">
+<center>
+<img src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/3dbook-arduino-beginners-guide.png" scale="0" width="185" height="250"></center><br></a></div>
+		</aside><aside id="blog_subscription-2" class="widget jetpack_subscription_widget"><h3 class="widget-title">Subscribe to Blog via Email</h3>
+			<form action="#" method="post" accept-charset="utf-8" id="subscribe-blog-blog_subscription-2">
+				<div id="subscribe-text"><p>Enter your email address to subscribe to this blog and receive notifications of new posts by email.</p>
+</div><p>Join 211 other subscribers</p>
+					<p id="subscribe-email">
+						<label id="jetpack-subscribe-label" for="subscribe-field-blog_subscription-2" style="clip: rect(1px, 1px, 1px, 1px); position: absolute; height: 1px; width: 1px; overflow: hidden;">
+							Email Address						</label>
+						<input type="email" name="email" required="required" class="required" id="subscribe-field-blog_subscription-2" placeholder="Email Address">
+					</p>
+
+					<p id="subscribe-submit">
+						<input type="hidden" name="action" value="subscribe">
+						<input type="hidden" name="source" value="https://circuits4you.com/2018/02/05/esp8266-arduino-wifi-web-server-led-on-off-control/">
+						<input type="hidden" name="sub-type" value="widget">
+						<input type="hidden" name="redirect_fragment" value="blog_subscription-2">
+												<input type="submit" value="Subscribe" name="jetpack_subscriptions_widget">
+					</p>
+							</form>
+
+			<script>
+			/*
+			Custom functionality for safari and IE
+			 */
+			(function( d ) {
+				// In case the placeholder functionality is available we remove labels
+				if ( ( 'placeholder' in d.createElement( 'input' ) ) ) {
+					var label = d.querySelector( 'label[for=subscribe-field-blog_subscription-2]' );
+						label.style.clip 	 = 'rect(1px, 1px, 1px, 1px)';
+						label.style.position = 'absolute';
+						label.style.height   = '1px';
+						label.style.width    = '1px';
+						label.style.overflow = 'hidden';
+				}
+
+				// Make sure the email value is filled in before allowing submit
+				var form = d.getElementById('subscribe-blog-blog_subscription-2'),
+					input = d.getElementById('subscribe-field-blog_subscription-2'),
+					handler = function( event ) {
+						if ( '' === input.value ) {
+							input.focus();
+
+							if ( event.preventDefault ){
+								event.preventDefault();
+							}
+
+							return false;
+						}
+					};
+
+				if ( window.addEventListener ) {
+					form.addEventListener( 'submit', handler, false );
+				} else {
+					form.attachEvent( 'onsubmit', handler );
+				}
+			})( document );
+			</script>
+				
+</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h3 class="widget-title">Join Circuits4You community</h3><div class="textwidget custom-html-widget"><a href="https://steps2make.com/">
+<img src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/Banner.jpg" scale="0">
+</a></div></aside>		<aside id="recent-posts-4" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="https://circuits4you.com/2018/11/28/raspberry-pi-mariadb-mysql-password-login-as-root/">Raspberry Pi mySql can not login as root with password</a>
+									</li>
+											<li>
+					<a href="https://circuits4you.com/2018/11/26/esp8266-nodemcu-tcp-socket-server-arduino-example/">ESP8266 NodeMCU TCP Socket Server Arduino Example</a>
+									</li>
+											<li>
+					<a href="https://circuits4you.com/2018/11/21/esp32-access-point-station-ap-html-web-server-arduino/">ESP32 Access point (AP) and Station web server with HTML using Arduino IDE</a>
+									</li>
+											<li>
+					<a href="https://circuits4you.com/2018/11/20/web-server-on-esp32-how-to-update-and-display-sensor-values/">Web server on ESP32: How to update and display sensor values?</a>
+									</li>
+											<li>
+					<a href="https://circuits4you.com/2018/10/23/rcwl-0516-radar-sensor-interface-arduino/">RCWL-0516 Doppler Radar Sensor Interface with Arduino</a>
+									</li>
+					</ul>
+		</aside><aside id="text-4" class="widget widget_text"><h3 class="widget-title">Advertisement</h3>			<div class="textwidget"><div>
+<script async="" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/adsbygoogle.js"></script>
+<!-- circuits4you -->
+<ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-2568807673303223" data-ad-slot="3262115968" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:260px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:260px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:260px;height:600px;" width="260" height="600" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<br>
+<div>
+<script async="" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/adsbygoogle.js"></script>
+<!-- circuits4you -->
+<ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-2568807673303223" data-ad-slot="3262115968" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:260px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:260px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0px;width:260px;height:600px;" width="260" height="600" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+		</aside>			</div><!-- .widget-area -->
+		</div><!-- .sidebar-inner -->
+	</div><!-- #tertiary -->
+
+		</div><!-- #main -->
+		<footer id="colophon" class="site-footer" role="contentinfo">
+				<div id="secondary" class="sidebar-container" role="complementary">
+		<div class="widget-area masonry" style="position: relative; height: 401.333px;">
+			<aside id="search-2" class="widget widget_search masonry-brick" style="position: absolute; left: 0px; top: 0px;"><form role="search" method="get" class="search-form" action="https://circuits4you.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form></aside>		<aside id="recent-posts-3" class="widget widget_recent_entries masonry-brick" style="position: absolute; left: 248px; top: 0px;">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="https://circuits4you.com/2018/11/28/raspberry-pi-mariadb-mysql-password-login-as-root/">Raspberry Pi mySql can not login as root with password</a>
+									</li>
+											<li>
+					<a href="https://circuits4you.com/2018/11/26/esp8266-nodemcu-tcp-socket-server-arduino-example/">ESP8266 NodeMCU TCP Socket Server Arduino Example</a>
+									</li>
+											<li>
+					<a href="https://circuits4you.com/2018/11/21/esp32-access-point-station-ap-html-web-server-arduino/">ESP32 Access point (AP) and Station web server with HTML using Arduino IDE</a>
+									</li>
+											<li>
+					<a href="https://circuits4you.com/2018/11/20/web-server-on-esp32-how-to-update-and-display-sensor-values/">Web server on ESP32: How to update and display sensor values?</a>
+									</li>
+											<li>
+					<a href="https://circuits4you.com/2018/10/23/rcwl-0516-radar-sensor-interface-arduino/">RCWL-0516 Doppler Radar Sensor Interface with Arduino</a>
+									</li>
+					</ul>
+		</aside><aside id="text-2" class="widget widget_text masonry-brick" style="position: absolute; left: 496px; top: 0px;"><h3 class="widget-title">About Us</h3>			<div class="textwidget"><a href="https://circuits4you.com/terms-and-conditions/">Terms &amp; Conditions</a><br>
+<a href="https://circuits4you.com/privacy-policy/">Privacy Policy</a><br>
+<a href="https://circuits4you.com/contact-us/">Contact Us</a></div>
+		</aside>		</div><!-- .widget-area -->
+	</div><!-- #secondary -->
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+	<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/comment-reply.js"></script>
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/imagesloaded.js"></script>
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/masonry.js"></script>
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/jquery.js"></script>
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/functions.js"></script>
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/wp-embed.js"></script>
+<!-- Title diw: "ESP8266 Arduino WiFi Web Server LED on off control | " : "|" : "right" -->
+<script type="text/javascript" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/e-201850.js" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:6.2.1',blog:'111354609',post:'1268',tz:'0',srv:'circuits4you.com'} ]);
+	_stq.push([ 'clickTrackerInit', '111354609', '1268' ]);
+</script>
+
+
+
+
+
+<ins class="adsbygoogle adsbygoogle-noablate" style="display: none !important;" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0px;width:0px;height:0px;" frameborder="0"></iframe></ins></ins></ins><iframe id="google_osd_static_frame_8417681382385" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe><img src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/g.gif" alt=":)" id="wpstats" scale="0" width="6" height="5"></body><iframe id="google_esf" name="google_esf" src="ESP8266%20Arduino%20WiFi%20Web%20Server%20LED%20on%20off%20control%20%20%20Circuits4you.com_files/zrt_lookup.html" style="display: none;" data-ad-client="ca-pub-7614241663497500"></iframe></html>
+<!-- Dynamic page generated in 0.929 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2018-12-13 15:44:00 -->
+<!-- super cache -->

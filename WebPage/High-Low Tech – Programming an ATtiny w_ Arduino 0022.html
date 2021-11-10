@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="distribution" content="global" />
+<meta name="robots" content="follow, all" />
+<meta name="language" content="en, sv" />
+
+
+<title>High-Low Tech  &#8211;  Programming an ATtiny w/ Arduino 0022</title>
+
+<meta name="distribution" content="global" />
+<meta name="robots" content="follow, all" />
+<meta name="language" content="en, sv" />
+<meta name="generator" content="WordPress 4.9.8" />
+
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://highlowtech.org/?feed=rss2" />
+<link rel="alternate" type="text/xml" title="RSS .92" href="http://highlowtech.org/?feed=rss" />
+<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://highlowtech.org/?feed=atom" />
+<link rel="pingback" href="http://highlowtech.org/xmlrpc.php" />
+	<link rel='archives' title='October 2014' href='http://highlowtech.org/?m=201410' />
+	<link rel='archives' title='July 2014' href='http://highlowtech.org/?m=201407' />
+	<link rel='archives' title='April 2014' href='http://highlowtech.org/?m=201404' />
+	<link rel='archives' title='December 2013' href='http://highlowtech.org/?m=201312' />
+	<link rel='archives' title='September 2013' href='http://highlowtech.org/?m=201309' />
+	<link rel='archives' title='August 2013' href='http://highlowtech.org/?m=201308' />
+	<link rel='archives' title='June 2013' href='http://highlowtech.org/?m=201306' />
+	<link rel='archives' title='May 2013' href='http://highlowtech.org/?m=201305' />
+	<link rel='archives' title='April 2013' href='http://highlowtech.org/?m=201304' />
+	<link rel='archives' title='February 2013' href='http://highlowtech.org/?m=201302' />
+	<link rel='archives' title='January 2013' href='http://highlowtech.org/?m=201301' />
+	<link rel='archives' title='December 2012' href='http://highlowtech.org/?m=201212' />
+	<link rel='archives' title='November 2012' href='http://highlowtech.org/?m=201211' />
+	<link rel='archives' title='October 2012' href='http://highlowtech.org/?m=201210' />
+	<link rel='archives' title='September 2012' href='http://highlowtech.org/?m=201209' />
+	<link rel='archives' title='August 2012' href='http://highlowtech.org/?m=201208' />
+	<link rel='archives' title='July 2012' href='http://highlowtech.org/?m=201207' />
+	<link rel='archives' title='June 2012' href='http://highlowtech.org/?m=201206' />
+	<link rel='archives' title='May 2012' href='http://highlowtech.org/?m=201205' />
+	<link rel='archives' title='April 2012' href='http://highlowtech.org/?m=201204' />
+	<link rel='archives' title='March 2012' href='http://highlowtech.org/?m=201203' />
+	<link rel='archives' title='February 2012' href='http://highlowtech.org/?m=201202' />
+	<link rel='archives' title='January 2012' href='http://highlowtech.org/?m=201201' />
+	<link rel='archives' title='December 2011' href='http://highlowtech.org/?m=201112' />
+	<link rel='archives' title='November 2011' href='http://highlowtech.org/?m=201111' />
+	<link rel='archives' title='October 2011' href='http://highlowtech.org/?m=201110' />
+	<link rel='archives' title='August 2011' href='http://highlowtech.org/?m=201108' />
+	<link rel='archives' title='July 2011' href='http://highlowtech.org/?m=201107' />
+	<link rel='archives' title='June 2011' href='http://highlowtech.org/?m=201106' />
+	<link rel='archives' title='May 2011' href='http://highlowtech.org/?m=201105' />
+	<link rel='archives' title='April 2011' href='http://highlowtech.org/?m=201104' />
+	<link rel='archives' title='March 2011' href='http://highlowtech.org/?m=201103' />
+	<link rel='archives' title='February 2011' href='http://highlowtech.org/?m=201102' />
+	<link rel='archives' title='January 2011' href='http://highlowtech.org/?m=201101' />
+	<link rel='archives' title='December 2010' href='http://highlowtech.org/?m=201012' />
+	<link rel='archives' title='November 2010' href='http://highlowtech.org/?m=201011' />
+	<link rel='archives' title='October 2010' href='http://highlowtech.org/?m=201010' />
+	<link rel='archives' title='September 2010' href='http://highlowtech.org/?m=201009' />
+	<link rel='archives' title='August 2010' href='http://highlowtech.org/?m=201008' />
+	<link rel='archives' title='July 2010' href='http://highlowtech.org/?m=201007' />
+	<link rel='archives' title='June 2010' href='http://highlowtech.org/?m=201006' />
+	<link rel='archives' title='May 2010' href='http://highlowtech.org/?m=201005' />
+	<link rel='archives' title='April 2010' href='http://highlowtech.org/?m=201004' />
+	<link rel='archives' title='March 2010' href='http://highlowtech.org/?m=201003' />
+	<link rel='archives' title='February 2010' href='http://highlowtech.org/?m=201002' />
+	<link rel='archives' title='January 2010' href='http://highlowtech.org/?m=201001' />
+	<link rel='archives' title='December 2009' href='http://highlowtech.org/?m=200912' />
+	<link rel='archives' title='November 2009' href='http://highlowtech.org/?m=200911' />
+	<link rel='archives' title='September 2009' href='http://highlowtech.org/?m=200909' />
+	<link rel='archives' title='February 2009' href='http://highlowtech.org/?m=200902' />
+	<link rel='archives' title='February 2008' href='http://highlowtech.org/?m=200802' />
+	<link rel='archives' title='October 2007' href='http://highlowtech.org/?m=200710' />
+	<link rel='archives' title='September 2007' href='http://highlowtech.org/?m=200709' />
+	<link rel='archives' title='November 2006' href='http://highlowtech.org/?m=200611' />
+	<link rel='archives' title='August 2006' href='http://highlowtech.org/?m=200608' />
+	<link rel='archives' title='March 2006' href='http://highlowtech.org/?m=200603' />
+	<link rel='archives' title='August 2005' href='http://highlowtech.org/?m=200508' />
+	<link rel='archives' title='January 2004' href='http://highlowtech.org/?m=200401' />
+<script type="text/javascript" src="http://highlowtech.org/wp-content/themes/white/js/prototype.js.php"></script>
+<script type="text/javascript" src="http://highlowtech.org/wp-content/themes/white/js/effects.js.php"></script>
+<script type="text/javascript" src="http://highlowtech.org/wp-content/themes/white/js/ajax_comments.js"></script>
+<style type="text/css" media="screen">
+		<!-- @import url( http://highlowtech.org/wp-content/themes/white/style.css ); -->
+		</style>
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="High-Low Tech &raquo; Programming an ATtiny w/ Arduino 0022 Comments Feed" href="http://highlowtech.org/?feed=rss2&#038;p=1229" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/highlowtech.org\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='https://api.w.org/' href='http://highlowtech.org/index.php?rest_route=/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://highlowtech.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://highlowtech.org/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Electronic Prototyping Kits and Tools' href='http://highlowtech.org/?p=1322' />
+<link rel='next' title='Active, Reactive, and Other Materials' href='http://highlowtech.org/?p=1314' />
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel="canonical" href="http://highlowtech.org/?p=1229" />
+<link rel='shortlink' href='http://highlowtech.org/?p=1229' />
+<link rel="alternate" type="application/json+oembed" href="http://highlowtech.org/index.php?rest_route=%2Foembed%2F1.0%2Fembed&#038;url=http%3A%2F%2Fhighlowtech.org%2F%3Fp%3D1229" />
+<link rel="alternate" type="text/xml+oembed" href="http://highlowtech.org/index.php?rest_route=%2Foembed%2F1.0%2Fembed&#038;url=http%3A%2F%2Fhighlowtech.org%2F%3Fp%3D1229&#038;format=xml" />
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Programming an ATtiny w/ Arduino 0022" />
+<meta property="og:url" content="http://highlowtech.org/?p=1229" />
+<meta property="og:description" content="This tutorial shows you how to program an ATtiny45 or ATtiny85 microcontroller using the Arduino software and hardware. The ATtiny45 and ATtiny85 are small (8-leg), cheap ($2-3) microcontrollers th…" />
+<meta property="article:published_time" content="2011-06-06T18:49:37+00:00" />
+<meta property="article:modified_time" content="2018-11-07T15:41:18+00:00" />
+<meta property="og:site_name" content="High-Low Tech" />
+<meta property="og:image" content="http://highlowtech.org/wp-content/uploads/2011/06/ArduinoISPtoATtiny45_85LED.png" />
+<meta property="og:image:width" content="445" />
+<meta property="og:image:height" content="426" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="Programming an ATtiny w/ Arduino 0022" />
+<meta name="twitter:card" content="summary" />
+
+<!-- Favorite Icon -->
+<link rel="icon" href="http://highlowtech.org/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://highlowtech.org/favicon.ico" type="image/x-icon" />
+
+</head>
+<body id="home" class="log">
+
+
+
+<div id="container">
+<div id="logo">
+<a href="index.php">
+<img src="http://highlowtech.org/images/high-low_tech_txt.jpg">
+</a>
+</div>
+
+<div id="content-container">
+<div id="sidebar">
+<! categories:
+   ABOUT = 3
+   NEWS = 10
+   PEOPLE = 4
+   PROJECTS =5
+   PUBLICATIONS = 9
+   TUTORIALS = 20
+   SUPPLIES = 21
+   WORKSHOPS = 6
+   MIT CLASSES = 15
+   ADMISSIONS = 16
+  UROP OPENINGS = 25
+!>
+
+	<li class="cat-item cat-item-5"><a href="http://highlowtech.org/?cat=5" >PROJECTS</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://highlowtech.org/?cat=4" >PEOPLE</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://highlowtech.org/?cat=9" >PUBLICATIONS</a>
+</li>
+<br>	<li class="cat-item cat-item-20"><a href="http://highlowtech.org/?cat=20" >TUTORIALS</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://highlowtech.org/?cat=21" >MATERIALS</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://highlowtech.org/?cat=10" >NEWS &amp; EVENTS</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://highlowtech.org/?cat=6" >WORKSHOPS</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://highlowtech.org/?cat=15" title="15">MIT CLASSES</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://highlowtech.org/?cat=16" title="16">ADMISSIONS</a>
+</li>
+<a href="?page_id=550">NEWSLETTER</a><br></div>
+</div>
+
+
+<div id="content">
+
+<div class="entrytitle">
+<a href="http://highlowtech.org/?p=1229" rel="bookmark"><h1>Programming an ATtiny w/ Arduino 0022</h1></a>
+</div>
+
+<div class="entrybody">
+<p><img src="http://highlowtech.org/wp-content/uploads/2011/06/ATtiny45-85-from-Arduino.jpg" alt="" title="Programming ATtiny45/ATtiny85 from Arduino" width="300" class="alignnone size-full wp-image-1270" /></p>
+<p>This tutorial shows you how to program an ATtiny45 or ATtiny85 microcontroller using the Arduino software and hardware.  The ATtiny45 and ATtiny85 are small (8-leg), cheap ($2-3) microcontrollers that are convenient for running simple programs.</p>
+<p> <span id="more-1229"></span></p>
+<p></p>
+<p><b>This tutorial is obsolete!  See the <a href="http://highlowtech.org/?p=1695">updated version of this tutorial</a> (with support for Arduino 1.0).</b></p>
+<p>They are almost identical, except that the ATtiny85 has twice the memory of the ATtiny45 and can therefore hold more complex programs.  We like to use both of them with paper circuits and other craft electronics.  To program them, we&#8217;ll use a port of the Arduino core libraries created by <a href='http://sites.google.com/site/elettronicaarduinoesperimenti/Home/arduino-ide-and-attiny45' rel='nofollow'>Alessandro Saporetti</a> and slightly modified by HLT.
+</p>
+<h2>Materials and Tools</h2>
+<p>For this tutorial, you&#8217;ll need:
+</p>
+<ul>
+<li><a href='http://arduino.cc/en/Main/ArduinoBoardDuemilanove' rel='nofollow'>Arduino Uno or Duemilanove</a> (w/ an ATmega328, not an older board with an ATmega168)
+</li>
+<li><a href='http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=ATTINY45-20PU-ND' rel='nofollow'>ATtiny45</a> or <a href='http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=ATTINY85-20PU-ND' rel='nofollow'>ATtiny85</a> (8-pin DIP package)
+</li>
+<li>a 10 uF capacitor (e.g. <a href='http://www.sparkfun.com/products/523' rel='nofollow'>from Sparkfun</a> or <a href='http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=P5134-ND' rel='nofollow'>from Digi-Key</a>)
+</li>
+<li>a breadboard
+</li>
+<li>jumper wires
+</li>
+</ul>
+<p class='vspace'>For more information, see our <a href='http://highlowtech.org/wiki/pmwiki.php?n=Main.Links'>list of materials and parts</a> and our <a href='http://highlowtech.org/wiki/pmwiki.php?n=Main.PrototypingSupplies'>list of prototyping supplies</a>.
+</p>
+<h2>Software</h2>
+<p>You&#8217;ll need the Arduino software (version 0022) and a plugin to add support for the ATtiny45/85.  Installation instructions for the Arduino software are available <a href='http://arduino.cc/en/Guide/Windows' rel='nofollow'>for Windows</a> and <a href='http://arduino.cc/en/Guide/MacOSX' rel='nofollow'>for Mac OS X</a>.
+</p>
+<p>
+Download: <a href='http://arduino.cc/en/Main/Software' rel='nofollow'>Arduino software</a>, <a href='http://highlowtech.org/wp-content/uploads/2011/06/attiny45_85.zip'>attiny45_85.zip</a></p>
+<h2>The ATtiny45 / ATtiny85 Microcontroller</h2>
+<p>Here&#8217;s the pinout of the ATtiny45 and ATtiny85:
+</p>
+<p><img src="http://highlowtech.org/wp-content/uploads/2011/06/attiny45_85pinout.png" alt="" title="attiny45_85pinout" width="546" height="174" class="alignnone size-full wp-image-1277" /></p>
+<h2>Installing ATtiny45 / ATtiny85 support in Arduino</h2>
+<ul>
+<li>Download: <a href='http://highlowtech.org/wp-content/uploads/2011/06/attiny45_85.zip'>attiny45_85.zip</a>
+</li>
+<li>Locate your Arduino sketchbook folder (you can find its location in the preferences dialog in the Arduino software)
+</li>
+<li>Create a new sub-folder called &#8220;hardware&#8221; in the sketchbook folder.
+</li>
+<li>Copy the attiny45_85 folder from the attiny45_85.zip to the hardware folder.
+</li>
+<li>Restart the Arduino development environment.
+</li>
+</ul>
+<h2>Turning the Arduino board into a programmer</h2>
+<p>We&#8217;re going to use the Arduino board to program the ATtiny45 or ATtiny85.  First, we&#8217;ll need to turn the Arduino board into an &#8220;in-system programmer&#8221; (ISP).  To this:
+</p>
+<ul>
+<li>Run the Arduino development environment.
+</li>
+<li>Open the ArduinoISP sketch from the examples menu.
+</li>
+<li>Select the board and serial port that correspond to your Arduino board.
+</li>
+<li>Upload the ArduinoISP sketch.
+</li>
+</ul>
+<h2>Connecting the Arduino board and the ATtiny</h2>
+<p>We&#8217;ll connect the Arduino board to the ATtiny as shown in the following diagram.  Use the dot in the corner of the ATtiny to orient it properly.  We&#8217;ll also connect a 10 uF capacitor between reset and ground on the Arduino board as shown in the diagram (the stripe on the capacitor that&#8217;s marked with a negative sign (-) should go to ground).  The capacitor prevents the Arduino board from resetting (which starts the bootloader), thus ensuring that the Arduino IDE talks to the ArduinoISP (not the bootloader) during the upload of sketches.  (The capacitor is needed if you&#8217;re using an Arduino Uno, and might also be necessary for an Arduino Duemilanove.)
+</p>
+<p><img src="http://highlowtech.org/wp-content/uploads/2011/06/Screen-shot-2011-06-06-at-1.46.39-PM.png" alt="" title="Connecting ATtiny45 from Arduino" width="431" height="408" class="alignnone size-full wp-image-1278" /></p>
+<p class='vspace'>Pin connections:
+</p>
+<ul>
+<li>ATtiny Pin 2 to Arduino Pin 13 (or SCK of another programmer)
+</li>
+<li>ATtiny Pin 1 to Arduino Pin 12 (or MISO of another programmer)
+</li>
+<li>ATtiny Pin 0 to Arduino Pin 11 (or MOSI of another programmer)
+</li>
+<li>ATtiny Reset Pin to Arduino Pin 10 (or RESET of another programmer)
+</li>
+</ul>
+<h2>Programming the ATtiny45 or ATtiny85</h2>
+<p>Next, we can use the Arduino as an ISP to upload a program to the ATtiny45/85:
+</p>
+<ul>
+<li>Open the Blink sketch from the examples menu.
+</li>
+<li>Change the pin numbers from 13 to 0.
+</li>
+<li>Select &#8220;ATtiny45 (w/ Arduino as ISP)&#8221; or &#8220;ATtiny85 (w/ Arduino as ISP)&#8221; from the Tools &gt; Board menu (leave the serial port set to that of your Arduino board).
+</li>
+<li>Upload the sketch.
+</li>
+</ul>
+<p class='vspace'>You&#8217;ll probably get the following message, but don&#8217;t worry, the upload should have worked anyway:
+</p>
+<pre class='escaped'>avrdude: please define PAGEL and BS2 signals in the configuration file for part ATtiny85
+avrdude: please define PAGEL and BS2 signals in the configuration file for part ATtiny85</pre>
+<p class='vspace'>Now, connect an LED and see if it blinks.
+</p>
+<p><img src="http://highlowtech.org/wp-content/uploads/2011/06/ArduinoISPtoATtiny45_85LED.png" alt="" title="ArduinoISPtoATtiny45_85LED" width="445" height="426" class="alignnone size-full wp-image-1276" /></p>
+<h2>Reference</h2>
+<p>The following Arduino commands should be supported:
+</p>
+<ul>
+<li><a href='http://arduino.cc/en/Reference/PinMode' rel='nofollow'>pinMode()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/DigitalWrite' rel='nofollow'>digitalWrite()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/DigitalRead' rel='nofollow'>digitalRead()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/AnalogRead' rel='nofollow'>analogRead()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/AnalogWrite' rel='nofollow'>analogWrite()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/ShiftOut' rel='nofollow'>shiftOut()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/PulseIn' rel='nofollow'>pulseIn()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/Millis' rel='nofollow'>millis()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/Micros' rel='nofollow'>micros()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/Delay' rel='nofollow'>delay()</a>
+</li>
+<li><a href='http://arduino.cc/en/Reference/DelayMicroseconds' rel='nofollow'>delayMicroseconds()</a>
+</li>
+</ul>
+</div>
+
+
+
+</div>
+
+<div id="footer">
+<a href="http://highlowtech.org/">High-Low Tech Group</a> :: <a href="http://www.media.mit.edu/">MIT Media Lab</a>
+</div>
+
+
+<script type='text/javascript' src='http://highlowtech.org/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /* RESET */
+
+        html,
+        body,
+        div,
+        ul,
+        ol,
+        li,
+        dl,
+        dt,
+        dd,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        form,
+        p,
+        blockquote,
+        fieldset,
+        input {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        code,
+        address,
+        caption,
+        cite,
+        code,
+        em,
+        strong,
+        th {
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        fieldset,
+        iframe {
+            border: none;
+        }
+
+        caption,
+        th {
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        ul,
+        li {
+            list-style: none outside none;
+        }
+
+
+        /* LAYOUT */
+
+        html {
+            background-color: #fff;
+            -webkit-text-size-adjust: none;
+        }
+
+        img {
+            color: transparent;
+            font-size: 0;
+            border: 0;
+            vertical-align: middle;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .clearer {
+            clear: both;
+            display: block;
+            margin: 0;
+            padding: 0;
+            height: 0;
+            line-height: 1px;
+            font-size: 1px;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+            .clearfix:after {
+                content: '.';
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+
+        body,
+        input,
+        button,
+        textarea {
+            font-family: Arial, Helvetica, sans-senif, SimSun;
+            color: #333;
+            font-size: 13px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #00a63f;
+            cursor: pointer;
+        }
+
+            a:hover,
+            a:focus,
+            .anchor:active,
+            .anchor:focus,
+            .anchor:hover {
+                text-decoration: underline;
+            }
+
+        .home-animate {
+            -webkit-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -o-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
+            -webkit-transition-duration: 200ms;
+            -moz-transition-duration: 200ms;
+            -ms-transition-duration: 100ms;
+            -o-transition-duration: 100ms;
+            transition-duration: 200ms;
+            transition-property: all;
+        }
+
+        select {
+            padding: 6px 10px;
+            border-color: #D8D8D8;
+        }
+
+        option {
+            padding: 1px 2px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .ui-textfield {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            overflow: visible;
+            outline: none;
+        }
+
+        .ui-button-primary {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #fff;
+            background: #2853ff;
+            font-family: inherit;
+        }
+
+            .ui-button-primary:hover {
+                color: #ffffff;
+                background: #33bcf2;
+                text-decoration: none;
+            }
+
+        .ui-window-normal {
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .ui-window-normal {
+            opacity: 0;
+            -moz-transform: scale(1.2);
+            -moz-box-shadow: 2px 5px 8px rgba(0, 0, 0, .25);
+            -webkit-box-shadow: 2px 5px 8px rgba(0, 0, 0, .25);
+            box-shadow: 2px 5px 8px rgba(0, 0, 0, .25);
+        }
+
+        .ui-window-transition {
+            opacity: 1;
+            -moz-transform: scale(1);
+            -moz-transition: opacity, -moz-transform .15s ease-in-out 0s;
+        }
+
+        .ui-window-normal {
+            border: 1px solid #ccc;
+        }
+
+            .ui-window-normal .ui-window-close,
+            .ui-window-normal .ui-window-close:visited {
+                background: url("../images/ui-window-close.png") no-repeat scroll 0 -2px;
+            }
+
+                .ui-window-normal .ui-window-close:hover {
+                    background: url("../images/ui-window-close.png") no-repeat scroll 0 -51px;
+                }
+
+                .ui-window-normal .ui-window-close,
+                .ui-window-normal .ui-window-close:visited {
+                    cursor: pointer;
+                    height: 0;
+                    overflow: hidden;
+                    padding-top: 17px;
+                    position: absolute;
+                    width: 17px;
+                }
+
+
+
+
+        /**/
+
+     .pcb_cont{overflow:hidden;width:300px; height: 600px; background:#eee; display:block; }
+
+            .pcb_cont form {
+                padding: 20px;
+            }
+
+        .flight-type-select h3 {
+            color: #2853ff;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 4px;
+            font-family: 'Roboto';
+            line-height: 18px;
+            height: 30px;
+            line-height: 30px;
+            padding: 10px 0;
+            float: left;
+        }
+
+        .flight-type-select .pcbway-logo {
+            width: 80px;
+            height: 30px;
+            display: block;
+            float: right;
+            background-image: url("/img/images/logo_black.png");
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+            .flight-type-select .pcbway-logo:hover {
+                background-position: 0 30px;
+            }
+
+        .flight-type-select p {
+            color: #707070;
+            font-size: 12px;
+        }
+
+        .pcb_cont .s_list li label {
+            display: block;
+            line-height: 20px;
+            font-weight: 700;
+            white-space: nowrap;
+            color: #555;
+        }
+
+        .pcb_cont .s_list li {
+            float: left;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .pcb_cont .s_list {
+            margin-top: 5px;
+        }
+
+            .pcb_cont .s_list li input[type=text] {
+                float: left;
+                width: 92%;
+                height: 28px;
+                text-indent: 5px;
+                border: 1px solid #D8D8D8;
+                background-color: #FFF;
+                outline: 0;
+                line-height: 28px;
+                padding-left: 5px;
+            }
+
+            .pcb_cont .s_list li input[type=radio] {
+                vertical-align: middle;
+            }
+
+            .pcb_cont .s_list li .asmessage {
+                max-width: 100%;
+                min-height: 50px;
+                line-height: 18px;
+                padding: 3px 5px;
+                resize: none;
+                border: 1px solid #999;
+                width: 93%;
+            }
+
+        .chicun {
+            font-size: 11px;
+            border-right: 1px solid #999;
+        }
+
+        .pcb_cont .s_list li.long_form {
+            width: 100%;
+        }
+
+            .pcb_cont .s_list li.long_form input {
+                width: 350px;
+            }
+
+        .pcb_cont .s_list li.small_form {
+            float: left;
+            width: auto;
+            min-width: 30.08%;
+        }
+
+        .pcb_cont .s_list li select {
+            width: 100%;
+            height: 30px;
+            color: #333;
+            border: 1px solid #D8D8D8;
+            background-color: #FFF;
+            outline: 0;
+        }
+
+        .pcb_cont .s_list li option {
+            padding: 3px 0;
+        }
+
+        .pcb_cont .s_list li input[type=text]:focus, .pcb_cont .s_list li input[type=text]:hover, .pcb_cont .s_list li select:focus, .pcb_cont .s_list li select:hover {
+            border-color: #67A1E1;
+        }
+
+        .input-x-addon {
+            float: left;
+            background: #f2f2f2;
+            width: 23px;
+            height: 28px;
+            text-align: center;
+            border-top: 1px solid #D8D8D8;
+            border-bottom: 1px solid #999;
+            line-height: 28px;
+        }
+
+        .pcb_cont .flight-type-select {
+            margin-bottom: 20px;
+        }
+
+        .pqFormSubmit {
+            ;
+        }
+
+            .pqFormSubmit .hui-coupons {
+                line-height: 16px;
+                height: 40px;
+            }
+
+                .pqFormSubmit .hui-coupons em {
+                    font-size: 14px;
+                    color: #2853ff;
+                    font-weight: 700;
+                }
+
+        .pw-main-feature {
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="pcb_cont">
+        <form id="frmInstantQuote" method="get" target="_blank" action="https://www.pcbway.com/orderonline.aspx">
+            <div class="pcbquote_form">
+                <div class="flight-type-select">
+                    <h3>Instant Quote</h3>
+                    <a href="https://www.pcbway.com/" target="_blank"> <div class="pcbway-logo"></div> </a>
+                    <a href="https://www.pcbway.com/orderonline.aspx" target="_blank"><img src="vertical-quotebox_data/bannaer1.png" width="271" height="138"></a>
+                        <ul class="s_list clearfix">
+                            <li>
+                                <label>Dimensions</label>
+                                <input placeholder="Length" id="circuit-y" name="x" style="width: 35%;" type="text">
+                                <div class="left input-x-addon">x</div>
+                                <input placeholder="Width" id="circuit-x" name="y" style="width: 35%;" type="text">
+                                <div class="left input-x-addon chicun">mm</div>
+                            </li>
+                            <li>
+                                <label>Quantity</label>
+                                <select id="num" name="num">
+                                    <option value="" selected="selected">Choose Num (pcs)</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    <option value="75">75</option>
+                                    <option value="100">100</option>
+                                    <option value="-1">100+</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>Layers</label>
+                                <select id="Layersquote" name="Layersquote">
+                                    <option value="1">1 Layer</option>
+                                    <option value="2" selected="selected">2 Layers</option>
+                                    <option value="4">4 Layers</option>
+                                    <option value="6">6 Layers</option>
+                                    <option value="8">8 Layers</option>
+                                    <option value="10">10 Layers</option>
+                                    <option value="12">12 Layers</option>
+                                    <option value="14">14 Layers</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>Thickness</label>
+                                <select name="Thicknessquote" id="Thicknessquote">
+                                    <option value="">Thickness</option>
+                                    <option value="0.4">0.4mm</option>
+                                    <option value="0.6">0.6mm</option>
+                                    <option value="0.8">0.8mm</option>
+                                    <option value="1.0">1.0mm</option>
+                                    <option value="1.2">1.2mm</option>
+                                    <option value="1.6" selected="selected">1.6mm</option>
+                                    <option value="2.0">2.0mm</option>
+                                    <option value="2.4">2.4mm</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <div class="pqFormSubmit">
+                            <p class="hui-coupons">Get a <em>$5.00</em> coupons Bonus</p>
+                            <a href="javascript:void(0)" onclick="document.forms['frmInstantQuote'].submit()" rel="nofollow" class="qsubmit ui-button ui-button-primary qsubmit" style="color:#fff !important;">Quote Now</a>
+
+
+                        </div>
+</div>
+        
+    </div></form>
+
+</div></body></html>
