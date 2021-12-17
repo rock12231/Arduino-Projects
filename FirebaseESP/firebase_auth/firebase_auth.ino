@@ -20,8 +20,8 @@
 #include <ESP8266WiFi.h>
 #include <FirebaseESP8266.h>
 
-#define FIREBASE_HOST "esp8266-c51a4-default-rtdb.firebaseio.com"
-#define FIREBASE_AUTH "ufgTghReHElUkIe83oH6E0EGinOMHxv8qYgtWouY"
+#define FIREBASE_HOST "light-web-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "tmYp0qOFElT0wfeRfwjMeDrV92TK27OwoImNzleX"
 #define WIFI_SSID "Avi"
 #define WIFI_PASSWORD "7071955977@"
 
