@@ -1,5 +1,5 @@
-#define LED_PIN D2
-#define BUTTON_PIN D1
+#define LED_PIN 13
+#define BUTTON_PIN 12
 
 byte lastButtonState = LOW;
 byte ledState = LOW;
